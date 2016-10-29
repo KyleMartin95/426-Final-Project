@@ -1,3 +1,11 @@
-#mapContainer{
+.container{
 	margin-top: 50px;
+}
+
+.jumbotron{
+	text-align: center;
+}
+
+#createEventInfo, #checkInInfo{
+	display: none;
 }
