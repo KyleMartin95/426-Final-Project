@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>CheckiNC</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+    <link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css\custom.css">
+    <style>
+      html, body,{
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <!-- Step 1. Add CSS for the mapping components -->   
+    <!-- HTML5 IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+      <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class = "navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">CheckiNC</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="https://github.com/KyleMartin95">stuff</a></li>
+          <li><a href="https://www.linkedin.com/in/kyle-martin-788742b2">stuff</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right"></ul>
+      </div>
+    </nav>
+    
+    <div class="container" id="mapContainer">
+      <div class="row">
+      
+          <div class="claro" id="map"></div>
+        
+      </div>
+      
+    </div>
+    
+    
+    <script src="https://js.arcgis.com/3.18/"></script>
+    <script>
+      var map;
+      require(["esri/map", "dojo/domReady!"], function(Map) {
+        map = new Map("map", {
+          basemap: "topo",
+          center: [-122.45, 37.75],
+          zoom: 13
+        });
+      });
+    </script>
+
+    <!-- jQuery (for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
