@@ -12,8 +12,15 @@ $(document).ready(function(){
 	});
 
 	$("#createEventSubmit").click(function(event){
+		var eName = document.getElementById("eventName").value;
+		var eDescription = document.getElementById("eventDescription").value;
+		var fName = document.getElementById("hostFirstName").value;
+		var lName = document.getElementById("hostLastName").value;
+		var email = document.getElementById("hostEmail").value;
+
+		//do php
+		
 		var empty = $(this).parent().find("input").filter(function() {
-			//do php stuff here
         	return this.value === "";
 	    });
 	    
