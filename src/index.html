@@ -37,29 +37,31 @@
           <button id="createEventButton" class="btn btn-info btn-lg center-block" type="button">Create an Event!</button>
         </div>
       </div>
-      <div class="row" id="createEventInfo">
-        <div class="form-group">
-          <label for="event">Event Name:</label>
-          <input type="text" class="form-control" id="eventName">
+      <form id="createEventForm">
+        <div class="row" id="createEventInfo">
+          <div class="form-group">
+            <label for="event">Event Name:</label>
+            <input type="text" class="form-control" id="eventName">
+          </div>
+          <div class="form-group">
+            <label for="description">Event Description:</label>
+            <input type="text" class="form-control" id="eventDescription">
+          </div>
+          <div class="form-group">
+            <label for="hostFirst">First Name:</label>
+            <input type="text" class="form-control" id="hostFirstName">
+          </div>
+          <div class="form-group">
+            <label for="hostLast">Last Name:</label>
+            <input type="text" class="form-control" id="hostLastName">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="hostEmail">
+          </div>
+          <button id="createEventSubmit" type="button" class="btn btn-default center-block">Submit</button>
         </div>
-        <div class="form-group">
-          <label for="description">Event Description:</label>
-          <input type="text" class="form-control" id="eventDescription">
-        </div>
-        <div class="form-group">
-          <label for="hostFirst">First Name:</label>
-          <input type="text" class="form-control" id="hostFirstName">
-        </div>
-        <div class="form-group">
-          <label for="hostLast">Last Name:</label>
-          <input type="text" class="form-control" id="hostLastName">
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="hostEmail">
-        </div>
-        <button type="submit" class="btn btn-default center-block">Submit</button>
-      </div>
+      </form>
     </div>
         
     <div class="container" id="checkInContainer">
@@ -68,23 +70,25 @@
           <button id="checkInButton" class="btn btn-info btn-lg center-block" type="button">Check In!</button>     
         </div>
       </div>
-      <div class="row" id="checkInInfo">
-        <div class="form-group">
-          <label for="searchEvent">Event Name:</label>
-          <input type="text" class="form-control" id="findEventName">
+      <form id="checkInForm">
+        <div class="row" id="checkInInfo">
+          <div class="form-group">
+            <label for="searchEvent">Event Name:</label>
+            <input type="text" class="form-control" id="findEventName">
+          </div>
+          <button id="checkInSubmit" type="button" class="btn btn-default center-block">Submit</button>
         </div>
-        <button type="submit" class="btn btn-default center-block">Submit</button>
-      </div>
+      </form>
     </div>
 
-    <div class="container" id="mapContainer">
+   <div class="container" id="mapContainer">
       <div class="row">
         <div class="claro" id="map"></div>
       </div>
     </div>
     
     
-    <script src="https://js.arcgis.com/3.18/"></script>
+    <!--<script src="https://js.arcgis.com/3.18/"></script>
     <script>
       var map;
       require(["esri/map", "dojo/domReady!"], function(Map) {
@@ -94,7 +98,7 @@
           zoom: 13
         });
       });
-    </script>
+    </script>-->
 
 
     <!-- jQuery (for Bootstrap's JavaScript plugins) -->
