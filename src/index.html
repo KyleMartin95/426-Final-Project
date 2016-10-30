@@ -40,10 +40,10 @@
         <form  action="EventSubmit.php" method="post" id="createEventForm">
           <div class="row" id="createEventInfo">
             <div class="form-group">
-              <input type="text" class="form-control" id="eventName" name="eName">
+              <input type="text" class="form-control" id="eventName" name="eName" value="Event Name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="eventDescription" name="eDescription">
+              <input type="text" class="form-control" id="eventDescription" name="eDescription" value="Event Description">
             </div>
             <div class="form-group">
               <input type="time" class="form-control" id="startTime" name="sTime">
@@ -52,13 +52,13 @@
               <input type="time" class="form-control" id="startTime" name="eTime">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="hostFirstName" name="fName">
+              <input type="text" class="form-control" id="hostFirstName" name="fName" value="First Name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="hostLastName" name="lName">
+              <input type="text" class="form-control" id="hostLastName" name="lName" value="Last Name">
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" id="hostEmail" name="email">
+              <input type="email" class="form-control" id="hostEmail" name="email" value="Email Address">
             </div>
             <div class="form-group">
               <input type="text" class="form-control" id="latitude" name="latitude">
@@ -80,8 +80,16 @@
         <form id="checkInForm" action="AttendeeSubmit.php" method="post">
           <div class="row" id="checkInInfo">
             <div class="form-group">
-              <label for="searchEvent">Event Name:</label>
-              <input type="text" class="form-control" id="findEventName" value="Enter the name of the event you want to check in to">
+              <input type="text" class="form-control" id="findEventName" name="eName" value="Enter the name of the event you want to check in to">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="attendeeFirstName" name="aFName" value="First Name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="attendeeLastName" name="aLName" value="Last Name">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="attendeeEmail" name="aEmail" value="Email Address">
             </div>
             <button id="checkInSubmit" type="button" class="btn btn-default center-block">Submit</button>
           </div>
@@ -96,17 +104,35 @@
 
     
     
-   <script src="https://js.arcgis.com/3.18/"></script>
-    <script>
-      var map;
-      require(["esri/map", "dojo/domReady!"], function(Map) {
-        map = new Map("map", {
-          basemap: "topo",
-          center: [-122.45, 37.75],
-          zoom: 13
-        });
+  <script src="https://js.arcgis.com/3.18/"></script>
+  <script>
+    var map;
+    require(["esri/map", "esri/geometry/webMercatorUtils", "esri/geometry/Point", "esri/SpatialReference", "esri/symbols/SimpleMarkerSymbol", "esri/graphic", "dojo/dom", "dojo/domReady!"], function(Map, webMercatorUtils, Point, SpatialReference, SimpleMarkerSymbol, Graphic, dom) {
+      map = new Map("map", {
+        basemap: "topo",
+        center: [-94.45, 39.00],
+        zoom: 4
       });
-    </script>
+      map.on("load", function() {
+        //after map loads, connect to listen to mouse move & drag events
+        map.on("click", handleClick);
+       // map.on("mouse-move", showCoordinates);
+       // map.on("mouse-drag", showCoordinates);
+      });
+      function handleClick(evt) {
+        //the map is in web mercator but display coordinates in geographic (lat, long)
+        var mp = webMercatorUtils.webMercatorToGeographic(evt.mapPoint);
+        //display mouse coordinates
+        dom.byId("longitude").value = mp.x.toFixed(3);
+        dom.byId("latitude").value = mp.y.toFixed(3);
+
+        var point = new Point(mp.x, mp.y, new SpatialReference({wkid:4326}));
+        var SimpleMarkerSymbol = new SimpleMarkerSymbol();
+        var graphic = new Graphic(point, SimpleMarkerSymbol);
+        map.graphics.add(graphic);
+      };
+    });
+  </script>
 
 
     <!-- jQuery (for Bootstrap's JavaScript plugins) -->
