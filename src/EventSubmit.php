@@ -28,7 +28,7 @@ try {
 	$conn->exec($sql);
 	$conn->exec($sql2);
 	$conn->exec($sql3);
-	echo "$eName,$latitude,$longitude,$numberAttending,$email,$startTime,$endTime,$eDescription";
+	echo "Added $eName,$latitude,$longitude,$numberAttending,$email,$startTime,$endTime,$eDescription";
     }
 catch(PDOException $e)
     {
