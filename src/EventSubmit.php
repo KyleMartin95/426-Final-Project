@@ -24,9 +24,11 @@ try {
 	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";
 	$sql2 = "INSERT INTO EventInfo (eventName, latitude, longitude, numberAttending, hostEmail, startTime, endTime, description) 
 				VALUES ('$eName','$latitude','$longitude','$numberAttending','$email','$startTime','$endTime','$eDescription')";
-    $conn->exec($sql);
+    $sql3 = "INSERT INTO EventInfo_2_Person (eventId, personId) VALUES ('$eName', '$email')";
+	$conn->exec($sql);
 	$conn->exec($sql2);
-	echo "New record created";
+	$conn->exec($sql3);
+	echo "$eName,$latitude,$longitude,$numberAttending,$email,$startTime,$endTime,$eDescription";
     }
 catch(PDOException $e)
     {

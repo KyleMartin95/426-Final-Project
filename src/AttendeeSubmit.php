@@ -1,5 +1,5 @@
 <?php
-//v0.0
+//v0.1
 $servername = "aamcogidqmerwy.cbnbzucuzfue.us-east-1.rds.amazonaws.com";
 $username = "tbrum96";
 $password = "Hacknc2016!";
@@ -13,9 +13,9 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$fName = $_GET['fName'];
-	$email= $_GET['email'];
-	$lName = $_GET['lName'];
+	$fName = $_GET['aFName'];
+	$email= $_GET['aEmail'];
+	$lName = $_GET['aLName'];
 	$eName = $_GET['eName'];
 	
 	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";
