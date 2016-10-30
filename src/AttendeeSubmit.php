@@ -16,7 +16,7 @@ try {
 	$fName = $_POST['aFName'];
 	$email= $_POST['aEmail'];
 	$lName = $_POST['aLName'];
-	$eName = $_POST['eName'];
+	$eName = $_POST['aEName'];
 	
 	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";
     $conn->exec($sql);
