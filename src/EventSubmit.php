@@ -10,15 +10,15 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$fName = $_GET['fName'];
-	$email= $_GET['email'];
-	$lName = $_GET['lName'];
-	$eName = $_GET['eName'];
-	$eDescription = $_GET['eDescription'];
-	$latitude = $_GET['latitude'];
-	$longitude = $_GET['longitude'];
-	$startTime = $_GET['sTime'];
-	$endTime = $_GET['eTime'];
+	$fName = $_POST['fName'];
+	$email= $_POST['email'];
+	$lName = $_POST['lName'];
+	$eName = $_POST['eName'];
+	$eDescription = $_POST['eDescription'];
+	$latitude = $_POST['latitude'];
+	$longitude = $_POST['longitude'];
+	$startTime = $_POST['sTime'];
+	$endTime = $_POST['eTime'];
 	$numberAttending = 0;
 	
 	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";

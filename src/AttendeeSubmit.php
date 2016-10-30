@@ -13,10 +13,10 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$fName = $_GET['aFName'];
-	$email= $_GET['aEmail'];
-	$lName = $_GET['aLName'];
-	$eName = $_GET['eName'];
+	$fName = $_POST['aFName'];
+	$email= $_POST['aEmail'];
+	$lName = $_POST['aLName'];
+	$eName = $_POST['eName'];
 	
 	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";
     $conn->exec($sql);
