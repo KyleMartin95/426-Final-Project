@@ -12,7 +12,7 @@ try {
 	$fName = $_GET['fName'];
 	$email= $_GET['email'];
 	$lname = $_GET['lName'];
-	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', $'email')";
+	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";
     $conn->exec($sql);
 	echo "New record created";
     }
