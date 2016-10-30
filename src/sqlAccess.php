@@ -1,5 +1,5 @@
  <?php
-$servername = "checkinc-db-cluster-1.cluster-c0wgf46nqjeq.us-west-2.rds.amazonaws.com";
+$servername = "checkinc-db-cluster-1.cluster-c0wgf46nqjeq.us-west-2.rds.amazonaws.com:3306";
 $username = "tbrum96";
 $password = "Hacknc2016!";
 $dbname = "CheckiNC";
