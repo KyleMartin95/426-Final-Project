@@ -10,7 +10,7 @@ body{
 	text-align: center;
 }
 
-#createEventInfo, #checkInInfo, #latitude, #longitude{
+#createEventInfo, #checkInInfo{
 	display: none;
 }
 
