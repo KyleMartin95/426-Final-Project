@@ -10,6 +10,8 @@ body{
 	text-align: center;
 }
 
-#createEventInfo, #checkInInfo{
+#createEventInfo, #checkInInfo, #latitude, #longitude{
 	display: none;
 }
+
+
