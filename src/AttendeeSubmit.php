@@ -1,8 +1,12 @@
- <?php
+<?php
+//v0.0
 $servername = "aamcogidqmerwy.cbnbzucuzfue.us-east-1.rds.amazonaws.com";
 $username = "tbrum96";
 $password = "Hacknc2016!";
 $dbname = "ebdb";
+
+///////////////TODO: Eliminate duplicates in eventInfo_2_person////////////////////////
+///////////////dont allow registration if past event expiration///////////////////////
 
 // Create connection
 try {
@@ -13,17 +17,13 @@ try {
 	$email= $_GET['email'];
 	$lName = $_GET['lName'];
 	$eName = $_GET['eName'];
-	$eDescription = $_GET['eDescription'];
-	$latitude = NULL;
-	$longitude = NULL;
-	$startTime = NULL;
-	$endTime = NULL;
-	$numberAttending = 1;
 	
 	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";
-	$sql2 = "INSERT INTO EventInfo (eventName, latitude, longitude, numberAttending, hostEmail, startTime, endTime, description) 
-				VALUES ('$eName','$latitude','$longitude','$numberAttending','$email','$startTime','$endTime','$eDescription')";
     $conn->exec($sql);
+	$sql2 = "INSERT INTO EventInfo_2_Person (eventId, personId) VALUES ('$eName', '$email')";
+	$conn->exec($sql2);
+	$sql3 = "UPDATE EventInfo SET numberAttending = numberAttending + 1 WHERE EventInfo.eventName = '$eName'";
+	$conn->exec($sql3);
 	echo "New record created";
     }
 catch(PDOException $e)
