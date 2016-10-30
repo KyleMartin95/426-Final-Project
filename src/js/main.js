@@ -27,10 +27,6 @@ $(document).ready(function(){
 	    if(empty.length) {
 	       	alert("Please enter all fields")
 	    }
-
-
-
-
 	});
 
 	$("#checkInSubmit").click(function(event){

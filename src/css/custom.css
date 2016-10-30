@@ -1,5 +1,9 @@
+body{
+	background-image: url("../images/Dark-Blue-Gray-Background.jpg");
+}
+
 .container{
-	margin-top: 50px;
+	margin-top: 25px;
 }
 
 .jumbotron{
