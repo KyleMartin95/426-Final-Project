@@ -1,3 +1,2 @@
 # HackNC
-Main repository for HackNC project
-test
+Main repository for 426 Final Project
