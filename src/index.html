@@ -6,7 +6,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>CheckiNC</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
     <link rel="stylesheet" type="text/css" href="css\bootstrapFlatly.min.css">
     <link rel="stylesheet" type="text/css" href="css\custom.css">
     <style>
@@ -24,6 +23,7 @@
     <![endif]-->
   </head>
   <body>
+     
       <div class="container">
         <div class="jumbotron">
           <h1>CheckiNC</h1>
@@ -32,12 +32,15 @@
       </div>
 
       <div class="container" id="createEventContainer">
+        
         <div class="row">
           <div class="col-xs-12">
             <button id="createEventButton" class="btn btn-info btn-lg center-block" type="button">Create an Event!</button>
           </div>
         </div>
+        
         <form  action="EventSubmit.php" method="post" id="createEventForm">
+          
           <div class="row" id="createEventInfo">
             <div class="form-group">
               <input type="text" class="form-control" id="eventName" name="eName" value="Event Name">
@@ -68,16 +71,25 @@
             </div>
             <button id="createEventSubmit" type="submit" class="btn btn-default center-block">Submit</button>
           </div>
+        
         </form>
+
       </div>
           
       <div class="container" id="checkInContainer">
+        
         <div class="row">
           <div class="col-xs-12">
             <button id="checkInButton" class="btn btn-info btn-lg center-block" type="button">Check In!</button>     
           </div>
         </div>
+<<<<<<< HEAD
         <form action="AttendeeSubmit.php" method="post" id="checkInForm" >
+=======
+        
+        <form id="checkInForm" action="AttendeeSubmit.php" method="post">
+          
+>>>>>>> 603ba9c2861ba8dcce2aeb3834300d83162a3fa1
           <div class="row" id="checkInInfo">
             <div class="form-group">
               <input type="text" class="form-control" id="findEventName" name="eName" value="Enter the name of the event you want to check in to">
@@ -93,15 +105,18 @@
             </div>
             <button id="checkInSubmit" type="submit" class="btn btn-default center-block">Submit</button>
           </div>
+        
         </form>
+      
       </div>
 
-     <div class="container" id="mapContainer">
-        <div class="row">
-          <div class="claro" id="map"></div>
-        </div>
+    <div class="container" id="mapContainer">
+      <div class="row">
+        <div id="map"></div>
       </div>
+    </div>
 
+<<<<<<< HEAD
     
     
     <script src="https://js.arcgis.com/3.18/"></script>
@@ -149,13 +164,24 @@
           y.value = position.coords.latitude;
       }
     </script>
+=======
+  
+    <!--                       functions for google maps                       -->
+    <script type="text/javascript" src="js\MapFunctions.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF-CiVwM4PAZmBZaFRQ8IhCnbM6An54CI&callback=myMap"></script>
+    <!-- ///////////////////////////////////////////////////////////////////// -->
 
+>>>>>>> 603ba9c2861ba8dcce2aeb3834300d83162a3fa1
 
-    <!-- jQuery (for Bootstrap's JavaScript plugins) -->
+    <!--                   jQuery (for Bootstrap's JavaScript plugins)                       -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- /////////////////////////////////////////////////////////////////////////////////// -->
     
+
+    <!--                   javascript for the page                             -->
     <script type="text/javascript" src="js/main.js"></script>
+    <!-- ///////////////////////////////////////////////////////////////////// -->
 
   </body>
 </html>
