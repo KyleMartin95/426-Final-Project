@@ -12,6 +12,7 @@ body{
 
 #createEventInfo, #checkInInfo{
 	display: none;
+	margin-top: 25px;
 }
 
 
