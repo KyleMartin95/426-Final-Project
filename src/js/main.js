@@ -48,6 +48,9 @@ $(document).ready(function(){
 			data: eventData,
 			success: function(newEvent){
 				//do stuff to update map and whatnot
+			},
+			error: function(){
+				alert('error creating event');
 			}
 		});
 	}
@@ -73,6 +76,9 @@ $(document).ready(function(){
 			data: findEventData,
 			success: function(newAttendee){
 				// do stuff
+			},
+			error: function(){
+				alert('error submitting attendee');
 			}
 		});
 	}
