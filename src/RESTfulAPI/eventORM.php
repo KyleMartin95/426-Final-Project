@@ -25,7 +25,7 @@ class MasterEventCreate
   public static function insert($fName, $lName, $email, $eventName, $latidude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description) {
     $mysqli = MasterEventCreate::connect();
 
-
+/*
     if ($startTime == null) {
       $strt = "null";
     } else {
@@ -38,7 +38,10 @@ class MasterEventCreate
       $endt = "'" . $endTime->format('Y-m-d h:i:s') . "'";
     }
 
-
+*/
+    $strt = null;
+    $endt = null;
+ 
     $result = $mysqli->query("insert into MasterEventCreate values (" .
 			     "'" . $mysqli->real_escape_string($fName) . "', " .
 			     "'" . $mysqli->real_escape_string($lName) . "', " .
@@ -50,7 +53,7 @@ class MasterEventCreate
 			     "'" . $mysqli->real_escape_string($numberAttending) . "', ".
 			     $strt . ", " .
 			     $endt . ", " .
-			     "'" . $mysqli->real_escape_string($description) . ")");
+			     "'" . $mysqli->real_escape_string($description) . "')");
     
     if ($result) {
       $id = $mysqli->insert_id;
@@ -79,6 +82,8 @@ class MasterEventCreate
   }
 
   public function getJSON() {
+
+/*
      if ($startTime == null) {
       $strt = null;
     } else {
@@ -90,7 +95,9 @@ class MasterEventCreate
     } else {
       $endt = $this->endTime->format('Y-m-d h:i:s');
     }
-
+*/
+    $strt = null;
+    $endt = null;
 
     $json_obj = array('fName' => $this->fName,
 		      'lName' => $this->lName,
