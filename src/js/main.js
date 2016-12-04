@@ -1,3 +1,5 @@
+var base_url = 'https://wwwp.classroom.cs.unc.edu/Courses/comp426-f16/users/kykyle/Final_Project/src/RestfulAPI';
+
 $(document).ready(function(){
 	debugger;
 
@@ -11,32 +13,74 @@ $(document).ready(function(){
 		$("#createEventContainer").toggle("slow");
 	});
 
-	$("#createEventSubmit").click(function(event){
-		var eName = document.getElementById("eventName").value;
-		var eDescription = document.getElementById("eventDescription").value;
-		var fName = document.getElementById("hostFirstName").value;
-		var lName = document.getElementById("hostLastName").value;
-		var email = document.getElementById("hostEmail").value;
+	$("#createEventSubmit").on('submit', event_submit_handler);
 
-		//do php
-		
-		var empty = $(this).parent().find("input").filter(function() {
-        	return this.value === "";
-	    });
-	    
-	    if(empty.length) {
-	       	alert("Please enter all fields")
-	    }
-	});
+	$("#checkInSubmit").on('submit', event_checkin_handler);
 
-	$("#checkInSubmit").click(function(event){
-		var empty = $(this).parent().find("input").filter(function() {
-			//do php stuff here
-        	return this.value === "";
-	    });
-	    
-	    if(empty.length) {
-	       	alert("Please enter event name");
-	    }
-	});
+	var eventName = $("#eventName");
+	var eventDescription = $("#eventDescription");
+	var startTime = $("#startTime");
+	var endTime = $("#endTime");
+	var hostFirstName = $("#hostFirstName");
+	var hostLastName = $("#hostLastName");
+	var hostEmail = $("#hostEmail");
+	var latitude = $("#latitude");
+	var longitude = $("#longitude");
+
+	var event_submit_handler = function(e){
+		e.preventDefault();
+
+		var eventData = {
+			eventName: eventName,
+			eventDescription: eventDescription,
+			startTime: startTime,
+			endTime: endTime,
+			firstName: hostFirstName,
+			lastName: hostLastName,
+			email: hostEmail,
+			latitude: latitude,
+			longitude: longitude
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: base_url + 'RESTfulAPI/EventSubmit.php',
+			data: eventData,
+			success: function(newEvent){
+				//do stuff to update map and whatnot
+			},
+			error: function(){
+				alert('error creating event');
+			}
+		});
+	}
+
+	var findEventName = $("#findEventName");
+	var attendeeFirstName = $("#attendeeFirstName");
+	var attendeeLastName = $("#attendeeLastName");
+	var attendeeEmail = $("#attendeeEmail");
+
+	var event_checkin_handler = function(e){
+		e.preventDefault();
+
+		var findEventData = {
+			eventName: findEventName,
+			firstName: attendeeFirstName,
+			lastName: attendeeLastName,
+			email: attendeeEmail
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: base_url + 'RestfulAPI/AttendeeSubmit.php',
+			data: findEventData,
+			success: function(newAttendee){
+				// do stuff
+			},
+			error: function(){
+				alert('error submitting attendee');
+			}
+		});
+	}
+
 });

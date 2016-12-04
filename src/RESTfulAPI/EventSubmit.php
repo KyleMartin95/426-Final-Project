@@ -1,9 +1,9 @@
  <?php
  //v0.0
-$servername = "aamcogidqmerwy.cbnbzucuzfue.us-east-1.rds.amazonaws.com";
-$username = "tbrum96";
-$password = "Hacknc2016!";
-$dbname = "ebdb";
+$servername = "classroom.cs.unc.edu";
+$username = "kykyle";
+$password = "Whaling11!!!";
+$dbname = "kykyledb";
 
 // Create connection
 try {
@@ -20,9 +20,9 @@ try {
 	$startTime = $_POST['sTime'];
 	$endTime = $_POST['eTime'];
 	$numberAttending = 0;
-	
+
 	$sql = "INSERT INTO Person ( fName, lName, email) VALUES ('$fName', '$lName', '$email')";
-	$sql2 = "INSERT INTO EventInfo (eventName, latitude, longitude, numberAttending, hostEmail, startTime, endTime, description) 
+	$sql2 = "INSERT INTO EventInfo (eventName, latitude, longitude, numberAttending, hostEmail, startTime, endTime, description)
 				VALUES ('$eName','$latitude','$longitude','$numberAttending','$email','$startTime','$endTime','$eDescription')";
     $sql3 = "INSERT INTO EventInfo_2_Person (eventId, personId) VALUES ('$eName', '$email')";
 	$conn->exec($sql);
@@ -35,4 +35,4 @@ catch(PDOException $e)
     echo $sql . "<br>" . $e->getMessage();
     }
 $conn = null;
-?> 
+?>

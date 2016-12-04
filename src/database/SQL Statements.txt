@@ -1,0 +1,31 @@
+CREATE TABLE `EventInfo` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `eventName` varchar(45) NOT NULL,
+  `latitude` decimal(10,0) DEFAULT NULL,
+  `longitude` decimal(10,0) DEFAULT NULL,
+  `numberAttending` int(11) NOT NULL DEFAULT '1',
+  `hostEmail` varchar(45) NOT NULL,
+  `startTime` time NOT NULL,
+  `endTime` time DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `eventName_UNIQUE` (`eventName`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Stores info for created events';
+
+CREATE TABLE `EventInfo_2_Person` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `eventId` int(11) NOT NULL,
+  `personId` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `event2PersonId_UNIQUE` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Person` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `fName` varchar(30) NOT NULL,
+  `lName` varchar(30) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `ID_UNIQUE` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
