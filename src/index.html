@@ -15,7 +15,7 @@
         margin: 0;
       }
     </style>
-    <!-- Step 1. Add CSS for the mapping components -->   
+    <!-- Step 1. Add CSS for the mapping components -->
     <!-- HTML5 IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -23,7 +23,7 @@
     <![endif]-->
   </head>
   <body>
-     
+
       <div class="container">
         <div class="jumbotron">
           <h1>CheckiNC</h1>
@@ -32,15 +32,15 @@
       </div>
 
       <div class="container" id="createEventContainer">
-        
+
         <div class="row">
           <div class="col-xs-12">
             <button id="createEventButton" class="btn btn-info btn-lg center-block" type="button">Create an Event!</button>
           </div>
         </div>
-        
+
         <form  action="EventSubmit.php" method="post" id="createEventForm">
-          
+
           <div class="row" id="createEventInfo">
             <div class="form-group">
               <input type="text" class="form-control" id="eventName" name="eName" value="Event Name">
@@ -69,27 +69,28 @@
             <div class="form-group">
               <input type="text" class="form-control" id="longitude" name="longitude">
             </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="radius" name="radius" value="50">
+            </div>
             <button id="createEventSubmit" type="submit" class="btn btn-default center-block">Submit</button>
           </div>
-        
+
         </form>
 
       </div>
-          
+
       <div class="container" id="checkInContainer">
-        
+
         <div class="row">
           <div class="col-xs-12">
-            <button id="checkInButton" class="btn btn-info btn-lg center-block" type="button">Check In!</button>     
+            <button id="checkInButton" class="btn btn-info btn-lg center-block" type="button">Check In!</button>
           </div>
         </div>
-<<<<<<< HEAD
+
         <form action="AttendeeSubmit.php" method="post" id="checkInForm" >
-=======
-        
+
         <form id="checkInForm" action="AttendeeSubmit.php" method="post">
-          
->>>>>>> 603ba9c2861ba8dcce2aeb3834300d83162a3fa1
+
           <div class="row" id="checkInInfo">
             <div class="form-group">
               <input type="text" class="form-control" id="findEventName" name="eName" value="Enter the name of the event you want to check in to">
@@ -105,9 +106,9 @@
             </div>
             <button id="checkInSubmit" type="submit" class="btn btn-default center-block">Submit</button>
           </div>
-        
+
         </form>
-      
+
       </div>
 
     <div class="container" id="mapContainer">
@@ -116,68 +117,19 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-    
-    
-    <script src="https://js.arcgis.com/3.18/"></script>
-    <script>
-      var map;
-      require(["esri/map", "esri/geometry/webMercatorUtils", "esri/geometry/Point", "esri/SpatialReference", "esri/symbols/SimpleMarkerSymbol", "esri/graphic", "dojo/dom", "dojo/domReady!"], function(Map, webMercatorUtils, Point, SpatialReference, SimpleMarkerSymbol, Graphic, dom) {
-        map = new Map("map", {
-          basemap: "topo",
-          center: [-94.45, 39.00],
-          zoom: 4
-        });
-        map.on("load", function() {
-          //after map loads, connect to listen to mouse move & drag events
-          map.on("click", handleClick);
-         // map.on("mouse-move", showCoordinates);
-         // map.on("mouse-drag", showCoordinates);
-        });
-        function handleClick(evt) {
-          //the map is in web mercator but display coordinates in geographic (lat, long)
-          var mp = webMercatorUtils.webMercatorToGeographic(evt.mapPoint);
-          //display mouse coordinates
-          dom.byId("longitude").value = mp.x.toFixed(3);
-          dom.byId("latitude").value = mp.y.toFixed(3);
 
-          var point = new Point(mp.x, mp.y, new SpatialReference({wkid:4326}));
-          var SimpleMarkerSymbol = new SimpleMarkerSymbol();
-          var graphic = new Graphic(point, SimpleMarkerSymbol);
-          map.graphics.add(graphic);
-        };
-      });
-    </script>
 
-    <script>
-      var x = document.getElementById("longitude");
-      var y = document.getElementById("latitude");
-      function getLocation() {
-          if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(showPosition);
-          } else {
-              x.innerHTML = "Geolocation is not supported by this browser.";
-          }
-      }
-      function showPosition(position) {
-          x.value = position.coords.longitude; 
-          y.value = position.coords.latitude;
-      }
-    </script>
-=======
-  
     <!--                       functions for google maps                       -->
     <script type="text/javascript" src="js\MapFunctions.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF-CiVwM4PAZmBZaFRQ8IhCnbM6An54CI&callback=myMap"></script>
     <!-- ///////////////////////////////////////////////////////////////////// -->
 
->>>>>>> 603ba9c2861ba8dcce2aeb3834300d83162a3fa1
 
     <!--                   jQuery (for Bootstrap's JavaScript plugins)                       -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- /////////////////////////////////////////////////////////////////////////////////// -->
-    
+
 
     <!--                   javascript for the page                             -->
     <script type="text/javascript" src="js/main.js"></script>

@@ -26,6 +26,7 @@ $(document).ready(function(){
 	var hostEmail = $("#hostEmail");
 	var latitude = $("#latitude");
 	var longitude = $("#longitude");
+	var radius = $("#radius");
 
 	var event_submit_handler = function(e){
 		e.preventDefault();
@@ -40,6 +41,7 @@ $(document).ready(function(){
 			email: hostEmail,
 			latitude: latitude,
 			longitude: longitude
+			radisu: radius
 		}
 
 		$.ajax({

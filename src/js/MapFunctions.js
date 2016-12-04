@@ -97,7 +97,14 @@ function placeCircle(map, location){
 		fillOpacity: 0.2,
 		editable: true
 	});
+  google.maps.event.addListener(circle, 'radius_changed', function() {
+    radiusChange(circle);
+  });
     circles.push(circle);
+}
+
+function radiusChange(circle){
+  document.getElementById("radius").value = getCircleRadius(circle);
 }
 
 function getCircleRadius(circle){
