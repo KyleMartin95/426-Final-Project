@@ -11,7 +11,8 @@ EventInfo: stores information on different events
 	longitude (decimal)
 	numberAttending (int)
 	hostID (int) FOREIGN KEY
-	startTime (time)
+	startTime (datetime)
+	endTime (datetime)
 	description (varchar)
 	
 EventInfo_2_Person: Relational table to associate each person with an event they are hosting or attending
@@ -27,7 +28,8 @@ MasterEventCreate: used to populate other tables when creating event
 	latitude (decminal)
 	longitude (decimal)
 	numberAttending (int)
-	startTime (time)
+	startTime (datetime)
+	endTime (datetime)
 	description (varchar)
 	
 MasterEventCheckIn: used to populate other tables when checking into event
