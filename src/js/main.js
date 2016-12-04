@@ -52,10 +52,11 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'POST',
+			dataType: "json",
 			url: base_url + 'RESTfulAPI/EventPost.php',
 			data: eventData,
 			success: function(newEvent){
-				//do stuff to update map and whatnot
+				alert("success: created event");
 			},
 			error: function(){
 				alert('error creating event');

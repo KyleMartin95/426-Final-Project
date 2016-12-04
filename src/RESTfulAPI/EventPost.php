@@ -13,7 +13,7 @@
   }
 
   if(isset($_REQUEST['lastName'])){
-    $fName = $_REQUEST['lastName'];
+    $lName = $_REQUEST['lastName'];
   }else{
     header("HTTP/1.0 400 Bad Request");
     print("Missing last name");
@@ -21,7 +21,7 @@
   }
 
   if(isset($_REQUEST['email'])){
-    $lName = $_REQUEST['email'];
+    $email = $_REQUEST['email'];
   }else{
     header("HTTP/1.0 400 Bad Request");
     print("Missing email");
@@ -86,7 +86,7 @@
 
   $numberAttending = 0;
 
-  $new_event = MasterEventCreate::insert($fName, $lName, $email, $eName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $eDescription);
+  $new_event = MasterEventCreate::insert($fName, $lName, $email, $eName, $latitude, $longitude, $radius, $numberAttending, $sTime, $eTime, $eDescription);
 
   // Report if failed
   if ($new_event == null) {
