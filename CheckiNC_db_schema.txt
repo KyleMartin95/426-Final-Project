@@ -18,3 +18,14 @@ EventInfo_2_Person: Relational table to associate each person with an event they
 	ID (int) PRIMARY KEY, AUTO INCREMENT
 	eventId (int) NOT NULL, FOREIGN KEY
 	personId (int) NOT NULL, FOREIGN KEY
+	
+Master: used to populate other tables
+	fName (varchar) 
+    lName (varchar)
+    email (varchar) UNIQUE
+	eventName (varchar)	UNIQUE
+	latitude (decminal)
+	longitude (decimal)
+	numberAttending (int)
+	startTime (time)
+	description (varchar)
