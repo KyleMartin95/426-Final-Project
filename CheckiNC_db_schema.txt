@@ -19,7 +19,7 @@ EventInfo_2_Person: Relational table to associate each person with an event they
 	eventId (int) NOT NULL, FOREIGN KEY
 	personId (int) NOT NULL, FOREIGN KEY
 	
-Master: used to populate other tables
+MasterEventCreate: used to populate other tables when creating event
 	fName (varchar) 
     lName (varchar)
     email (varchar) UNIQUE
@@ -29,3 +29,9 @@ Master: used to populate other tables
 	numberAttending (int)
 	startTime (time)
 	description (varchar)
+	
+MasterEventCheckIn: used to populate other tables when checking into event
+	fName (varchar) 
+    lName (varchar)
+    email (varchar) UNIQUE
+	eventName (varchar)	UNIQUE
