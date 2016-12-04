@@ -47,10 +47,10 @@ class MasterEventCreate
 			     "'" . $mysqli->real_escape_string($lName) . "', " .
 		      	     "'" . $mysqli->real_escape_string($email) . "', " .
 			     "'" . $mysqli->real_escape_string($eventName) . "', " .
-			     "'" . $mysqli->real_escape_string($latitude) . "', " .
-			     "'" . $mysqli->real_escape_string($longitude) . "', " .
-			     "'" . $mysqli->real_escape_string($radius) . "', ".
-			     "'" . $mysqli->real_escape_string($numberAttending) . "', ".
+			     $latitude . ", " .
+			     $longitude . ", " .
+			     $radius . ", ".
+			     $numberAttending . ", ".
 			     $strt . ", " .
 			     $endt . ", " .
 			     "'" . $mysqli->real_escape_string($description) . "')");
