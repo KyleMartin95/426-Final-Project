@@ -14,6 +14,7 @@ EventInfo: stores information on different events
 	startTime (datetime)
 	endTime (datetime)
 	description (varchar)
+	radius (decimal)
 	
 EventInfo_2_Person: Relational table to associate each person with an event they are hosting or attending
 	ID (int) PRIMARY KEY, AUTO INCREMENT
@@ -31,6 +32,7 @@ MasterEventCreate: used to populate other tables when creating event
 	startTime (datetime)
 	endTime (datetime)
 	description (varchar)
+	radius (decimal)
 	
 MasterEventCheckIn: used to populate other tables when checking into event
 	fName (varchar) 
