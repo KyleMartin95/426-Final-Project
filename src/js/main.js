@@ -19,31 +19,33 @@ $(document).ready(function(){
 
 	$("#checkInSubmit").on('submit', event_checkin_handler);
 
-	var eventName = $("#eventName");
-	var eventDescription = $("#eventDescription");
-	var startTime = $("#startTime");
-	var endTime = $("#endTime");
-	var hostFirstName = $("#hostFirstName");
-	var hostLastName = $("#hostLastName");
-	var hostEmail = $("#hostEmail");
-	var latitude = $("#latitude");
-	var longitude = $("#longitude");
-	var radius = $("#radius");
+
 
 	var event_submit_handler = function(e){
 		debugger;
 
+		var eventName = $("#eventName").val();
+		var eventDescription = $("#eventDescription").val();
+		var startTime = $("#startTime").val();
+		var endTime = $("#endTime").val();
+		var hostFirstName = $("#hostFirstName").val();
+		var hostLastName = $("#hostLastName").val();
+		var hostEmail = $("#hostEmail").val();
+		var latitude = $("#latitude").val();
+		var longitude = $("#longitude").val();
+		var radius = $("#radius").val();
+
 		var eventData = {
-			eventName: eventName,
-			eventDescription: eventDescription,
-			startTime: startTime,
-			endTime: endTime,
-			firstName: hostFirstName,
-			lastName: hostLastName,
-			email: hostEmail,
-			latitude: latitude,
-			longitude: longitude,
-			radius: radius
+			"eventName": eventName,
+			"eventDescription": eventDescription,
+			"startTime": startTime,
+			"endTime": endTime,
+			"firstName": hostFirstName,
+			"lastName": hostLastName,
+			"email": hostEmail,
+			"latitude": latitude,
+			"longitude": longitude,
+			"radius": radius
 		}
 
 		$.ajaxSetup({
@@ -64,19 +66,19 @@ $(document).ready(function(){
 		});
 	}
 
-	var findEventName = $("#findEventName");
-	var attendeeFirstName = $("#attendeeFirstName");
-	var attendeeLastName = $("#attendeeLastName");
-	var attendeeEmail = $("#attendeeEmail");
-
 	var event_checkin_handler = function(e){
 		e.preventDefault();
 
+		var findEventName = $("#findEventName").val();
+		var attendeeFirstName = $("#attendeeFirstName").val();
+		var attendeeLastName = $("#attendeeLastName").val();
+		var attendeeEmail = $("#attendeeEmail").val();
+
 		var findEventData = {
-			eventName: findEventName,
-			firstName: attendeeFirstName,
-			lastName: attendeeLastName,
-			email: attendeeEmail
+			"eventName": findEventName,
+			"firstName": attendeeFirstName,
+			"lastName": attendeeLastName,
+			"email": attendeeEmail
 		}
 
 		$.ajax({
