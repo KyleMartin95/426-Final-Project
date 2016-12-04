@@ -88,5 +88,16 @@
 
   $new_event = MasterEventCreate::insert($fName, $lName, $email, $eName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $eDescription);
 
+  // Report if failed
+  if ($new_event == null) {
+    header("HTTP/1.0 500 Server Error");
+    print("Server couldn't create new event");
+    exit();
+  }
+
+  //Generate JSON encoding of new event
+  header("Content-type: application/json");
+  print($new_event->getJSON());
+  exit();
 
 ?>

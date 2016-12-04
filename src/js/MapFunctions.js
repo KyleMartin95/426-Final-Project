@@ -2,8 +2,6 @@ var markers = [];
 var circles =[];
 
 function myMap() {
-    debugger;
-
     //sets the div to draw the map on
     var mapCanvas = document.getElementById("map");
 

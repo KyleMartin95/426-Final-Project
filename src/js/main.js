@@ -1,7 +1,6 @@
 var base_url = 'https://wwwp.classroom.cs.unc.edu/Courses/comp426-f16/users/kykyle/Final_Project/src/RestfulAPI';
 
 $(document).ready(function(){
-	debugger;
 
 	$("#createEventButton").click(function(event){
 		$("#createEventInfo").toggle("slow");
@@ -13,7 +12,10 @@ $(document).ready(function(){
 		$("#createEventContainer").toggle("slow");
 	});
 
-	$("#createEventSubmit").on('submit', event_submit_handler);
+	$("#createEventForm").submit(function(){
+		debugger;
+		event_submit_handler();
+	});
 
 	$("#checkInSubmit").on('submit', event_checkin_handler);
 
@@ -29,7 +31,7 @@ $(document).ready(function(){
 	var radius = $("#radius");
 
 	var event_submit_handler = function(e){
-		e.preventDefault();
+		debugger;
 
 		var eventData = {
 			eventName: eventName,
@@ -40,13 +42,17 @@ $(document).ready(function(){
 			lastName: hostLastName,
 			email: hostEmail,
 			latitude: latitude,
-			longitude: longitude
-			radisu: radius
+			longitude: longitude,
+			radius: radius
 		}
+
+		$.ajaxSetup({
+		    async: true
+		});
 
 		$.ajax({
 			type: 'POST',
-			url: base_url + 'RESTfulAPI/EventSubmit.php',
+			url: base_url + 'RESTfulAPI/EventPost.php',
 			data: eventData,
 			success: function(newEvent){
 				//do stuff to update map and whatnot
@@ -74,7 +80,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'POST',
-			url: base_url + 'RestfulAPI/AttendeeSubmit.php',
+			url: base_url + 'RestfulAPI/AttendeePost.php',
 			data: findEventData,
 			success: function(newAttendee){
 				// do stuff
