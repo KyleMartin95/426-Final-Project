@@ -1,10 +1,4 @@
  <?php
-$my_file = 'file.txt';
-$handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
-$data = 'This is the data';
-fwrite($handle, $data);
-fclose($handle);
-
   require_once('eventORM.php');
 
   $path_components = explode('/', $_SERVER['PATH_INFO']);
