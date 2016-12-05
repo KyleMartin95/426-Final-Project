@@ -1,4 +1,4 @@
-var base_url = 'https://wwwp.classroom.cs.unc.edu/Courses/comp426-f16/users/kykyle/Final_Project/src/RestfulAPI';
+var base_url = 'https://wwwp.cs.unc.edu/Courses/comp426-f16/users/kykyle/Final_Project/src/RESTfulAPI/';
 
 $(document).ready(function(){
 
@@ -53,9 +53,9 @@ $(document).ready(function(){
 		});
 
 		$.ajax({
-			type: 'POST',
+			type: "POST",
 			dataType: "json",
-			url: base_url + 'RESTfulAPI/EventPost.php',
+			url: base_url + "EventPost.php",
 			data: eventData,
 			success: function(newEvent){
 				alert("success: created event");
