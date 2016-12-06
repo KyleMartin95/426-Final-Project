@@ -2,11 +2,11 @@
 
 //add filtering paramaters for Get index
 
-require_once('orm/EventInfo_2_Person.php');
-require_once('orm/EventInfo.php');
-require_once('orm/Person.php');
-require_once('orm/MasterEventCreate.php');
-require_once('orm/MasterEventCheckIn.php');
+require_once('ORM/EventInfo_2_Person.php');
+require_once('ORM/EventInfo.php');
+require_once('ORM/Person.php');
+require_once('ORM/MasterEventCreate.php');
+require_once('ORM/MasterEventCheckIn.php');
 
 $path_components = explode('/', $_SERVER['PATH_INFO']);
 $resource_type = $resource_components[1];
