@@ -18,7 +18,7 @@ class Person
   public static function insert($fName, $lName, $email) {
     $mysqli = Person::connect();
 
-    $result = $mysqli->query("insert into Person values (" .
+    $result = $mysqli->query("insert into Person (fName, lName, email) values (" .
 			     "'" . $mysqli->real_escape_string($fName) . "', " .
 			     "'" . $mysqli->real_escape_string($lName) . "', " .
 			     "'" . $mysqli->real_escape_string($email) . "')");
@@ -33,7 +33,7 @@ class Person
   public static function findByID($id) {
     $mysqli = Person::connect();
 
-    $result = $mysqli->query("select * from Person where id = " . $id);
+    $result = $mysqli->query("select * from Person where ID = " . $id);
     if ($result) {
       if ($result->num_rows == 0) {
 	return null;
@@ -41,7 +41,7 @@ class Person
 
       $Person_info = $result->fetch_array();
 
-      return new Person(intval($Person_info['id']),
+      return new Person(intval($Person_info['ID']),
 		      $Person_info['fName'],
 		      $Person_info['lName'],
 		      $Person_info['email']);
@@ -52,24 +52,24 @@ class Person
   public static function getAllIDs() {
     $mysqli = Person::connect();
 
-    $result = $mysqli->query("select id from Person");
+    $result = $mysqli->query("select ID from Person");
     $id_array = array();
 
     if ($result) {
       while ($next_row = $result->fetch_array()) {
-	$id_array[] = intval($next_row['id']);
+	$id_array[] = intval($next_row['ID']);
       }
     }
     return $id_array;
   }
   public static function getIDs($email){
 	$mysqli = Person::connect();
-	$result = $mysqli->query("select id from Person where Email = " . $email);
+	$result = $mysqli->query("select ID from Person where email = " . $email);
 	$id_array = array();
 
 	if ($result) {
 	  while($next_row = $result->fetch_array()) {
-	    $id_array[] = ($next_row['id']);
+	    $id_array[] = ($next_row['ID']);
 	  }
 	}
 	return $id_array;
@@ -77,14 +77,14 @@ class Person
   }
 
   private function __construct($id, $fName, $lName, $email) {
-    $this->id = $id;
+    $this->ID = $id;
     $this->fName = $fName;
     $this->lName = $lName;
     $this->email = $email;
   }
 
   public function getID() {
-    return $this->id;
+    return $this->ID;
   }
 
   public function getFName() {
@@ -96,7 +96,7 @@ class Person
   }
 
   public function getEmail() {
-    return $this->Email;
+    return $this->email;
   }
 
   public function setFName($fName) {
@@ -124,18 +124,18 @@ class Person
 			     "'" . $mysqli->real_escape_string($this->lName) . "', " .
 			     "email=" .
 			     "'" . $mysqli->real_escape_string($this->email) . "', " .
-			     " where id=" . $this->id);
+			     " where ID=" . $this->ID);
     return $result;
   }
 
   public function delete() {
     $mysqli = Person::connect();
-    $mysqli->query("delete from Person where id = " . $this->id);
+    $mysqli->query("delete from Person where ID = " . $this->ID);
   }
 
   public function getJSON() {
 
-    $json_obj = array('id' => $this->id,
+    $json_obj = array('ID' => $this->ID,
 		      'fName' => $this->fName,
 		      'lName' => $this->lName,
 		      'email' => $this->email);
