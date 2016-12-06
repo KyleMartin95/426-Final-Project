@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Create An Event</title>
+    <link rel="stylesheet" type="text/css" href="css\bootstrapFlatly.min.css">
+    <link rel="stylesheet" type="text/css" href="css\custom.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Create an Event</h2>
+        <p>Fill out the form below and specify the location and size of your event with the map</p>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row" id="createEventInfo">
+        <form id="createEventForm" action="EventPost.php" method="POST">
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="eventName" name="eName" value="Event Name">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="eventDescription" name="eDescription" value="Event Description">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input type="time" class="form-control" id="startTime" name="sTime">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="time" class="form-control" id="startTime" name="eTime">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="hostFirstName" name="fName" value="First Name">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="hostLastName" name="lName" value="Last Name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input type="email" class="form-control" id="hostEmail" name="email" value="Email Address">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="latitude" name="latitude">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="longitude" name="longitude">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="radius" name="radius" value="50">
+            </div>
+          </div>
+          <button id="createEventSubmit" type="submit" class="btn btn-default center-block">Submit</button>
+        </form>
+    </div>
+  </div>
+
+
+
+    <div class="container" id="mapContainer">
+      <div class="row">
+        <div id="map"></div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <!--                       functions for google maps                       -->
+    <script type="text/javascript" src="js\MapFunctions.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF-CiVwM4PAZmBZaFRQ8IhCnbM6An54CI&callback=myMap"></script>
+    <!-- ///////////////////////////////////////////////////////////////////// -->
+
+
+    <!--                   jQuery (for Bootstrap's JavaScript plugins)                       -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- /////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+    <!--                   javascript for the page                             -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <!-- ///////////////////////////////////////////////////////////////////// -->
+  </body>
+</html>

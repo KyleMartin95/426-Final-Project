@@ -14,7 +14,9 @@ $(document).ready(function(){
 
 	$("#createEventForm").on('submit', function(e){
 		e.preventDefault();
-		var eventName = $("#eventName").val();
+
+
+		/*var eventName = $("#eventName").val();
 		var eventDescription = $("#eventDescription").val();
 		var startTime = $("#startTime").val();
 		var endTime = $("#endTime").val();
@@ -42,14 +44,13 @@ $(document).ready(function(){
 		    async: true
 		});
 
-		console.log(base_url + "EventPost.php/");
+		console.log($('#createEventForm').serializeArray());
 
 		$.ajax({
 			type: "POST",
 			dataType: "json",
 			url: base_url + "EventPost.php",
-			data: $("#createEventForm").serialize(),
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data: $('#createEventForm').serializeArray(),
 			success: function(newEvent){
 				alert("success: created event");
 			},
@@ -57,8 +58,34 @@ $(document).ready(function(){
 				debugger;
 				alert('error creating event');
 			}
-		});
+		});*/
+
+    // Get URL from rest_url text input
+    var ajax_url = base_url + "EventPost.php";
+
+    // Set up settings for AJAX call
+    var settings = {
+			type: "POST",
+			data: data,
+			success: ajax_success_handler,
+			error: ajax_error_handler,
+			cache: false
+    }
+
+    // Make AJAX call
+    $.ajax(ajax_url, settings);
 	});
+
+	var ajax_success_handler = function(data, textStatus, jqXHR) {
+	    /*$('#returnstatus').html(jqXHR.status);
+	    $('#returntext').html(jqXHR.responseText);*/
+			alert("success");
+	};
+
+	var ajax_error_handler = function(jqXHR, textStatus, errorThown) {
+	    $('#returnstatus').html(jqXHR.status);
+	    $('#returntext').html(jqXHR.responseText);
+	};
 
 	$("#checkInSubmit").on('submit', event_checkin_handler);
 

@@ -31,93 +31,23 @@
         </div>
       </div>
 
-      <div class="container" id="createEventContainer">
-
-        <div class="row">
-          <div class="col-xs-12">
-            <button id="createEventButton" class="btn btn-info btn-lg center-block" type="button">Create an Event!</button>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+        <a href="create_event.html" id="createEventButton" class="btn btn-info btn-lg center-block" role="button">Create an Event</a>
         </div>
-
-        <form id="createEventForm">
-
-          <div class="row" id="createEventInfo">
-            <div class="form-group">
-              <input type="text" class="form-control" id="eventName" name="eName" value="Event Name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="eventDescription" name="eDescription" value="Event Description">
-            </div>
-            <div class="form-group">
-              <input type="time" class="form-control" id="startTime" name="sTime">
-            </div>
-            <div class="form-group">
-              <input type="time" class="form-control" id="startTime" name="eTime">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="hostFirstName" name="fName" value="First Name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="hostLastName" name="lName" value="Last Name">
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" id="hostEmail" name="email" value="Email Address">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="latitude" name="latitude">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="longitude" name="longitude">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="radius" name="radius" value="50">
-            </div>
-            <button id="createEventSubmit" type="submit" class="btn btn-default center-block">Submit</button>
-          </div>
-
-        </form>
-
       </div>
+    </div>
 
       <div class="container" id="checkInContainer">
 
         <div class="row">
           <div class="col-xs-12">
-            <button id="checkInButton" class="btn btn-info btn-lg center-block" type="button">Check In!</button>
+            <a href="check_in_event.html" id="checkInButton" class="btn btn-info btn-lg center-block" role="button">Check Into an Event</a>
           </div>
         </div>
 
-        <form action="" method="post" id="checkInForm" >
-
-        <form id="checkInForm" action="AttendeeSubmit.php" method="post">
-
-          <div class="row" id="checkInInfo">
-            <div class="form-group">
-              <input type="text" class="form-control" id="findEventName" name="eName" value="Enter the name of the event you want to check in to">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="attendeeFirstName" name="aFName" value="First Name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="attendeeLastName" name="aLName" value="Last Name">
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" id="attendeeEmail" name="aEmail" value="Email Address">
-            </div>
-            <button id="checkInSubmit" type="submit" class="btn btn-default center-block">Submit</button>
-          </div>
-
-        </form>
-
       </div>
-
-    <div class="container" id="mapContainer">
-      <div class="row">
-        <div id="map"></div>
-      </div>
-    </div>
-
-
 
     <!--                       functions for google maps                       -->
     <script type="text/javascript" src="js\MapFunctions.js"></script>
@@ -129,6 +59,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- /////////////////////////////////////////////////////////////////////////////////// -->
+
 
 
     <!--                   javascript for the page                             -->
