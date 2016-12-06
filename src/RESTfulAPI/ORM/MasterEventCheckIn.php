@@ -18,7 +18,7 @@ class MasterEventCheckIn
   public static function insert($fName, $lName, $email, $eventName) {
     $mysqli = MasterEventCheckIn::connect();
 
-    $result = $mysqli->query("insert into MasterEventCheckIn values (" .
+    $result = $mysqli->query("insert into MasterEventCheckIn (fName, lName, email, eventName) values (" .
 			     "'" . $mysqli->real_escape_string($fName) . "', " .
 			     "'" . $mysqli->real_escape_string($lName) . "', " .
 		      	     "'" . $mysqli->real_escape_string($email) . "', " .
