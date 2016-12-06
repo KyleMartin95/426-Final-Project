@@ -12,12 +12,12 @@ class EventInfo
   private $hostID;
   private $startTime;
   private $endTime;
-  private $description; 
+  private $description;
 
   public static function connect() {
-    return new mysqli("classroom.cs.unc.edu", 
-		      "kykyle", 
-                      "Whaling11!!!", 
+    return new mysqli("classroom.cs.unc.edu",
+		      "kykyle",
+                      "Whaling11!!!",
 		      "kykyledb");
   }
 
@@ -34,6 +34,7 @@ class EventInfo
       $endt = "null";
     } else {
       $endt = "'" . $endTime->format('Y-m-d h:i:s') . "'";
+    }
 
     $result = $mysqli->query("insert into EventInfo values (" .
 			     "'" . $mysqli->real_escape_string($eventName) . "', " .
@@ -45,7 +46,7 @@ class EventInfo
 			     $strt . ", " .
 			     $endt . ", " .
 			     "'" . $mysqli->real_escape_string($description) . "')");
-    
+
     if ($result) {
       $id = $mysqli->insert_id;
       return new EventInfo($id, $eventName, $latitude, $longitude, $radius, $numberAttending, $hostID, $startTime, $endTime, $description);
@@ -106,9 +107,9 @@ class EventInfo
 
   public static function getIDs($eventName){
 		$mysqli = EventInfo::connect();
-		$result = $mysqli->("select id from EventInfo where EventName = '" .$ mysqli->real_escape_string($eventName). "' ");
+		$result = $mysqli->("select id from EventInfo where EventName = '" . $mysqli->real_escape_string($eventName). "'");
 		$id_array = array();
-		
+
 		if($result){
 			while($next_row = $result->fetch_array()){
 			 $id_array[] = intval($next_row['id']);
@@ -158,11 +159,11 @@ class EventInfo
   public function getStartTime() {
     return $this->startTime;
   }
-  
+
   public function getEndTime() {
     return $this->endTime;
   }
- 
+
   public function getDescription(){
     return $this->description;
   }
@@ -201,12 +202,12 @@ class EventInfo
     $this->startTime = $startTime;
     return $this->update();
   }
-  
+
   public function setEndTime($endTime) {
     $this->endTime = $endTime;
     return $this->update();
   }
- 
+
   public function description($description){
     $this->description = $description;
     return $this->update();
@@ -224,8 +225,8 @@ class EventInfo
     if ($this->endTime == null) {
       $endt = "null";
     } else {
-      $endt = "'" . $this->endtime->format('Y-m-d h:i:s) . "'";
-    
+      $endt = "'" . $this->endtime->format('Y-m-d h:i:s') . "'";
+
     $result = $mysqli->query("update EventInfo set " .
 			     "eventName=" .
 			     "'" . $mysqli->real_escape_string($this->eventName) . "', " .
@@ -279,4 +280,3 @@ class EventInfo
     return json_encode($json_obj);
   }
 }
-
