@@ -16,14 +16,13 @@ class MasterEventCreate
   private $description;
 
   public static function connect() {
-    return new mysqli("classroom.cs.unc.edu", 
-		      "kykyle", 
-                      "Whaling11!!!", 
-		      "kykyledb");
+    echo " made it to connect method ";
+    return new mysqli("classroom.cs.unc.edu","kykyle","Whaling11!!!", "kykyledb");
   }
 
-  public static function insert($fName, $lName, $email, $eventName, $latidude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description) {
+  public static function insert($fName, $lName, $email, $eventName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description) {
     $mysqli = MasterEventCreate::connect();
+    echo " made it to insert method ";
 
 /*
     if ($startTime == null) {
@@ -39,22 +38,39 @@ class MasterEventCreate
     }
 
 */
-    $strt = null;
-    $endt = null;
+    $strt = "";
+    $endt = "";
 
-    $result = $mysqli->query("insert into MasterEventCreate values (" .
-			     "'" . $mysqli->real_escape_string($fName) . "', " .
-			     "'" . $mysqli->real_escape_string($lName) . "', " .
-		      	     "'" . $mysqli->real_escape_string($email) . "', " .
-			     "'" . $mysqli->real_escape_string($eventName) . "', " .
+    $queryText = "insert into MasterEventCreate (fName, lName, email, eventName, latitude, longitude, radius, numberAttending, description) values ('" .
+          $mysqli->real_escape_string($fName) . "', '" .
+          $mysqli->real_escape_string($lName) . "', '" .
+          $mysqli->real_escape_string($email) . "', '" .
+          $mysqli->real_escape_string($eventName) . "', " .
 			     $latitude . ", " .
 			     $longitude . ", " .
 			     $radius . ", ".
 			     $numberAttending . ", ".
 			     $strt . ", " .
 			     $endt . ", " .
+			     "'" . $mysqli->real_escape_string($description) . "')";
+
+       echo $queryText;
+
+    $result = $mysqli->query("insert into MasterEventCreate (fName, lName, email, eventName, latitude, longitude, radius, numberAttending, description) values ('" .
+          $mysqli->real_escape_string($fName) . "', '" .
+          $mysqli->real_escape_string($lName) . "', '" .
+          $mysqli->real_escape_string($email) . "', '" .
+          $mysqli->real_escape_string($eventName) . "', " .
+			     $latitude . ", " .
+			     $longitude . ", " .
+			     $radius . ", ".
+			     $numberAttending . ", ".
+			     //$strt . ", " .
+			     //$endt . ", " .
 			     "'" . $mysqli->real_escape_string($description) . "')");
-    
+
+    echo $result;
+
     if ($result) {
       $id = $mysqli->insert_id;
       return new MasterEventCreate($fName, $lName, $email, $eventName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description);
@@ -63,6 +79,7 @@ class MasterEventCreate
   }
 
   private function __construct($fName, $lName, $email, $eventName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description) {
+    echo "made it to constructor";
     $this->fName = $fName;
     $this->lName = $lName;
     $this->email = $email;
@@ -113,4 +130,3 @@ class MasterEventCreate
     return json_encode($json_obj);
   }
 }
-
