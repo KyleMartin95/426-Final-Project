@@ -1,8 +1,20 @@
  <?php
+ 
   require_once('eventORM.php');
 
-  $path_components = explode('/', $_SERVER['PATH_INFO']);
+  print_r($_POST);
+  print_r($_GET);
+  print_r($_REQUEST);
 
+  $path_components = explode('/', $_SERVER['PATH_INFO']);
+// test too see if post was made/////////////
+  if($_SERVER['REQUEST_METHOD']=='POST'){
+    echo "got post request";
+  }else{
+    echo "did not get post";
+    print_r($_SERVER['REQUEST_METHOD']);
+  }
+  //////test and assign each parameter
   if(isset($_REQUEST['firstName'])){
     $fName = $_REQUEST['firstName'];
   }else{
@@ -82,9 +94,10 @@
     print("Missing radius");
     exit();
   }
-
   $numberAttending = 0;
 
+
+///////////////////insert info into database////////////////////////////
   $new_event = MasterEventCreate::insert($fName, $lName, $email, $eName, $latitude, $longitude, $radius, $numberAttending, $sTime, $eTime, $eDescription);
 
   // Report if failed

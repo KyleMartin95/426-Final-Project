@@ -12,18 +12,8 @@ $(document).ready(function(){
 		$("#createEventContainer").toggle("slow");
 	});
 
-	$("#createEventForm").submit(function(){
-		debugger;
-		event_submit_handler();
-	});
-
-	$("#checkInSubmit").on('submit', event_checkin_handler);
-
-
-
-	var event_submit_handler = function(e){
-		debugger;
-
+	$("#createEventForm").on('submit', function(e){
+		e.preventDefault();
 		var eventName = $("#eventName").val();
 		var eventDescription = $("#eventDescription").val();
 		var startTime = $("#startTime").val();
@@ -52,19 +42,25 @@ $(document).ready(function(){
 		    async: true
 		});
 
+		console.log(base_url + "EventPost.php/");
+
 		$.ajax({
 			type: "POST",
 			dataType: "json",
 			url: base_url + "EventPost.php",
-			data: eventData,
+			data: $("#createEventForm").serialize(),
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			success: function(newEvent){
 				alert("success: created event");
 			},
 			error: function(){
+				debugger;
 				alert('error creating event');
 			}
 		});
-	}
+	});
+
+	$("#checkInSubmit").on('submit', event_checkin_handler);
 
 	var event_checkin_handler = function(e){
 		e.preventDefault();
