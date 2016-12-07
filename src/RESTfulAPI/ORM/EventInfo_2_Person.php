@@ -17,7 +17,7 @@ class EventInfo_2_Person
   public static function findByID($id) {
     $mysqli = EventInfo_2_Person::connect();
 
-    $result = $mysqli->query("select * from EventInfo_2_Person where id = " . $id);
+    $result = $mysqli->query("select * from EventInfo_2_Person where ID = " . $id);
     if ($result) {
       if ($result->num_rows == 0) {
 	return null;
@@ -25,9 +25,9 @@ class EventInfo_2_Person
 
       $EventInfo_2_Person_info = $result->fetch_array();
 
-      return new EventInfo_2_Person(intval($EventInfo_2_Person_info['id']),
-		      $EventInfo_2_Person_info['eventID'],
-		      $EventInfo_2_Person_info['personID']);
+      return new EventInfo_2_Person(intval($EventInfo_2_Person_info['ID']),
+		      $EventInfo_2_Person_info['eventId'],
+		      $EventInfo_2_Person_info['personId']);
       }
     return null;
   }
@@ -35,79 +35,76 @@ class EventInfo_2_Person
   public static function getAllIDs() {
     $mysqli = EventInfo_2_Person::connect();
 
-    $result = $mysqli->query("select id from EventInfo_2_Person");
+    $result = $mysqli->query("select ID from EventInfo_2_Person");
     $id_array = array();
 
     if ($result) {
       while ($next_row = $result->fetch_array()) {
-	$id_array[] = intval($next_row['id']);
+	$id_array[] = intval($next_row['ID']);
       }
     }
     return $id_array;
   }
   public static function getIDs($eventID){
 	$mysqli = EventInfo_2_Person::connect();
-	$result = $mysqli->query("select id from EventInfo_2_Person where eventID = " . $eventID);
+	$result = $mysqli->query("select ID from EventInfo_2_Person where eventId = " . $eventID);
 	$id_array = array();
 
 	if ($result) {
 	  while($next_row = $result->fetch_array()) {
-	    $id_array[] = ($next_row['id']);
+	    $id_array[] = ($next_row['ID']);
 	  }
 	}
 	return $id_array;
   }
 
   private function __construct($id, $eventID, $personID) {
-    $this->id = $id;
-    $this->eventID = $eventID;
-    $this->personID = $personID;
+    $this->ID = $id;
+    $this->eventId = $eventID;
+    $this->personId = $personID;
   }
 
   public function getID() {
-    return $this->id;
+    return $this->ID;
   }
 
-  public function getEventID() {
-    return $this->eventID;
+  public function getEventId() {
+    return $this->eventId;
   }
 
-  public function getPersonID() {
-    return $this->personID;
+  public function getPersonId() {
+    return $this->personId;
   }
 
-  public function setEventID($eventID) {
-    $this->eventID = $eventID;
+  public function setEventId($eventID) {
+    $this->eventId = $eventID;
     return $this->update();
   }
 
-  public function setPersonID($personID) {
-    $this->personID = $personID;
+  public function setPersonId($personID) {
+    $this->personId = $personID;
     return $this->update();
   }
 
   private function update() {
     $mysqli = EventInfo_2_Person::connect();
 
-    $result = $mysqli->query("update EventInfo_2_Person set " .
-			     "eventID=" .
-			     "'" . $mysqli->real_escape_string($this->eventID) . "', " .
-			     "personID=" .
-			     "'" . $mysqli->real_escape_string($this->personID) . "', " .
-			     " where id=" . $this->id);
+    $result = $mysqli->query("update EventInfo_2_Person set eventId = " . $this->eventID . 
+				 ", personId = " . $this->personID . 
+				 ", where ID = " . $this->id);
     return $result;
   }
 
   public function delete() {
     $mysqli = EventInfo_2_Person::connect();
-    $mysqli->query("delete from EventInfo_2_Person where id = " . $this->id);
+    $mysqli->query("delete from EventInfo_2_Person where ID = " . $this->id);
   }
 
   public function getJSON() {
 
-    $json_obj = array('id' => $this->id,
-		      'eventID' => $this->eventID,
-		      'personID' => $this->personID);
+    $json_obj = array('ID' => $this->id,
+		      'eventId' => $this->eventID,
+		      'personId' => $this->personID);
     return json_encode($json_obj);
   }
 }
