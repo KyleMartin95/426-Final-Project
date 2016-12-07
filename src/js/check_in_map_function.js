@@ -2,6 +2,8 @@ var markers = [];
 var circles =[];
 var latitude;
 var longitude;
+var circleRadius;
+var myMap;
 
 function myMapCheckIn() {
     //sets the div to draw the map on
@@ -14,7 +16,7 @@ function myMapCheckIn() {
     };
 
     //creates map
-    var map = new google.maps.Map(mapCanvas, mapOptions);
+    myMap = new google.maps.Map(mapCanvas, mapOptions);
 
     var infowindow = new google.maps.InfoWindow({
     });
@@ -27,16 +29,16 @@ function myMapCheckIn() {
               lng: position.coords.longitude
             };
 
-            map.setCenter(pos);
-            map.setZoom(15);
-            placeMarker(map, pos);
+            myMap.setCenter(pos);
+            myMap.setZoom(15);
+            placeMarker(myMap, pos);
 
         }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
+            handleLocationError(true, infoWindow, myMap.getCenter());
         });
     }else{
         // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
+        handleLocationError(false, infoWindow, myMap.getCenter());
     }
 
  	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -46,6 +48,14 @@ function myMapCheckIn() {
                             'Error: Your browser doesn\'t support geolocation.');
     }
 
+}
+
+function displayLookedUpEvent(lat, long, radius){
+  var pos = {
+    lat: lat,
+    lng: long
+  };
+  placeCircle(myMap, pos);
 }
 
 // function called on click event to set a map marker at click location
@@ -81,13 +91,13 @@ function placeCircle(map, location){
 	var circle = new google.maps.Circle({
 		map: map,
 		center: location,
-		radius: 50,
+		radius: circleRadius,
 		strokeColor: "#0000FF",
 		strokeOpacity: 0.8,
 		strokeWeight: 2,
 		fillColor: "#0000FF",
 		fillOpacity: 0.2,
-		editable: true
+		editable: false
 	});
     circles.push(circle);
 }
