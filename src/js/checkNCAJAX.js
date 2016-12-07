@@ -1,5 +1,5 @@
 var url_base = "https://wwwp.cs.unc.edu/Courses/comp426-f16/users/kykyle/Final_Project/src/RESTfulAPI/checkNC.php";
-
+$(document).ready(function(){
 	var post_event = function(){
 		$.ajax({type: "POST",
 			url: url_base + "/MasterEventCreate",
@@ -42,3 +42,4 @@ var url_base = "https://wwwp.cs.unc.edu/Courses/comp426-f16/users/kykyle/Final_P
 			}
 		});
 	};
+});

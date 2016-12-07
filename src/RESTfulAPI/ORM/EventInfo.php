@@ -71,41 +71,43 @@ class EventInfo
   public static function findByEventName($eventName){
     $mysqli = EventInfo::connect();
 
-    $result = $mysqli->query("select * from EventInfo where eventName = " . $eventName);
+    $result = $mysqli->query("select * from EventInfo where eventName = '" . $eventName . "'");
     if ($result) {
-      if ($result->num_rows == 0) {
-	return null;
-      }
-
       $EventInfo_info = $result->fetch_array();
 
       if ($EventInfo_info['startTime'] != null) {
-	$startTime = new DateTime($EventInfo_info['startTime']);
+
+	       $startTime = new DateTime($EventInfo_info['startTime']);
       } else {
-	$startTime = null;
+
+	       $startTime = "";
       }
 
       if ($EventInfo_info['endTime'] != null) {
-	$endTime = new DateTime($EventInfo_info['endTime']);
+
+	        $endTime = new DateTime($EventInfo_info['endTime']);
       } else {
-	$endTime = null;
+
+	       $endTime = "";
       }
 
-      return new EventInfo(intval($EventInfo_info['id']),
+      return new EventInfo(intval($EventInfo_info['ID']),
 		      $EventInfo_info['eventName'],
 		      floatval($EventInfo_info['latitude']),
 		      floatval($EventInfo_info['longitude']),
-		      floatval($EventInfo_info['radius']),
+		      intval($EventInfo_info['radius']),
 		      intval($EventInfo_info['numberAttending']),
 		      intval($EventInfo_info['hostID']),
 		      $startTime,
 		      $endTime,
 		      $EventInfo_info['description']);
+    }else{
+      return null;
     }
-    return null;
   }
 
   private function __construct($id, $eventName, $latitude, $longitude, $radius, $numberAttending, $hostID, $startTime, $endTime, $description) {
+
     $this->id = $id;
     $this->eventName = $eventName;
     $this->latitude = $latitude;
@@ -244,13 +246,15 @@ class EventInfo
     if ($this-> startTime == null) {
       $strt = null;
     } else {
-      $strt= $this->startTime->format('Y-m-d h:i:s');
+      //$strt= $this->startTime->format('Y-m-d h:i:s');
+      $strt = "";
     }
 
     if ($this-> endTime == null) {
       $endt = null;
     } else {
-      $endt= $this->endTime->format('Y-m-d h:i:s');
+      //$endt= $this->endTime->format('Y-m-d h:i:s');
+      $endt = "";
     }
 
 
@@ -267,4 +271,3 @@ class EventInfo
     return json_encode($json_obj);
   }
 }
-

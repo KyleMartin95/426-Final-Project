@@ -9,12 +9,6 @@ require_once('ORM/MasterEventCheckIn.php');
 $path_components = explode('/', $_SERVER['PATH_INFO']);
 $resource_type = $path_components[1];
 
-echo $_SERVER['PATH_INFO'];
-echo "       ";
-echo $_SERVER['REQUEST_METHOD'];
-echo "            ";
-print_r($_REQUEST);
-
 switch($resource_type) {
 	case "MasterEventCreate" :
 		if ($_POST){
@@ -186,7 +180,7 @@ switch($resource_type) {
 		   }
 		*/
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
-		
+
 			/*
 			if ((count($path_components) == 3) && $path_components[2] !== ""){
 				header("HTTP/1.0 404 Bad Request");
@@ -258,17 +252,18 @@ switch($resource_type) {
 		}
 	break;
 
-	case “EventInfo” :
+	case "EventInfo":
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
 			if (isset($_REQUEST['EventName'])) {
 				header("Content-type: application/json");
-				print(json_encode(EventInfo::findByEventName($_REQUEST['EventName'])));
+				$returnEvent = EventInfo::findByEventName($_REQUEST['EventName']);
+				print($returnEvent->getJSON());
 				exit();
 			}
 			else {
-			print("not set");
+				print("not set");
 			}
-			}
+		}
 			/*
 			$eventinfo_eventname == ($path_components[2]);
 			$eventinfo = EventInfo::findbyEventName($eventinfo_eventname);
@@ -312,7 +307,7 @@ switch($resource_type) {
 		   header("HTTP/1.0 404 Bad Request");
 		   print("Incorrect GET Request");
 		} */
-		
+
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
 			/*
 			if ((count($path_components) == 3) && $path_components[2] !== ""){
@@ -466,11 +461,11 @@ switch($resource_type) {
       				print("Event id of " . $eventinfo_eventname . " was not found.");
       				exit();
     			   }
-		
+
 			$person_array = EventInfo_2_Person::getAllPersonIDs($eventid);
-			
-			
-			
+
+
+
 			header('Content-Type: application/json');
 			print($person_array->getJSON());
 			exit();
@@ -490,7 +485,7 @@ switch($resource_type) {
 		   }
 		*/
 
-	
+
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
 			if ((count($path_components) == 3) && ($path_components[2] !== "")){
 				header("HTTP/1.0 404 Bad Request");
@@ -561,4 +556,3 @@ switch($resource_type) {
 header("HTTP/1.0 400 made it to bottom");
 print("Did not understand URL");
 ?>
-
