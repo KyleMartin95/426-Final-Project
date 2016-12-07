@@ -17,7 +17,7 @@ print_r($_REQUEST);
 
 switch($resource_type) {
 	case "MasterEventCreate" :
-		if ($_SERVER['REQUEST_METHOD'] == "POST"){
+		if ($_POST){
 			/*if ((count($path_components) != 2)){
 			header("HTTP/1.0 404 Not Found");
 		   	print("Incorrect POST Request");
@@ -564,6 +564,6 @@ switch($resource_type) {
 	default:
 	break;
 }
-header("HTTP/1.0 400 Bad Request");
+header("HTTP/1.0 400 made it to bottom");
 print("Did not understand URL");
 ?>
