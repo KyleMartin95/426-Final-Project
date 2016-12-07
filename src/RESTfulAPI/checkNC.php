@@ -281,7 +281,6 @@ switch($resource_type) {
 			print($eventinfo->getJSON());
 			exit();
 			*/
-		}
 
 
 		/*
