@@ -265,6 +265,10 @@ switch($resource_type) {
 				print(json_encode(EventInfo::findByEventName($_REQUEST['EventName'])));
 				exit();
 			}
+			else {
+			print("not set");
+			}
+			}
 			/*
 			$eventinfo_eventname == ($path_components[2]);
 			$eventinfo = EventInfo::findbyEventName($eventinfo_eventname);
@@ -309,6 +313,7 @@ switch($resource_type) {
 		   header("HTTP/1.0 404 Bad Request");
 		   print("Incorrect GET Request");
 		} */
+		
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
 			/*
 			if ((count($path_components) == 3) && $path_components[2] !== ""){
