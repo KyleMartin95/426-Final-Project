@@ -1,5 +1,7 @@
 var markers = [];
 var circles =[];
+var latitude;
+var longitude;
 
 function myMapCheckIn() {
     //sets the div to draw the map on
@@ -98,9 +100,15 @@ function getCircleCenter(circle){
     return center = circle.center;
 }
 
+function getAttendeeLat(){
+  return latitude;
+}
+
+function getAttendeeLong(){
+  return longitude;
+}
+
 //function called on click event to set long and lat on the form for submission
-var latitude;
-var longitude
 function setLatLong(location){
 	longitude = location.lng();
 	latitude = location.lat();
