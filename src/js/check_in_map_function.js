@@ -1,7 +1,7 @@
 var markers = [];
 var circles =[];
 
-function myMap() {
+function myMapCheckIn() {
     //sets the div to draw the map on
     var mapCanvas = document.getElementById("map");
 
@@ -17,7 +17,6 @@ function myMap() {
     var infowindow = new google.maps.InfoWindow({
     });
 
-
     //gets user location and sets map to that location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -26,7 +25,6 @@ function myMap() {
               lng: position.coords.longitude
             };
 
-            setLatLongGeo(position);
             map.setCenter(pos);
             map.setZoom(15);
             placeMarker(map, pos);
@@ -46,12 +44,6 @@ function myMap() {
                             'Error: Your browser doesn\'t support geolocation.');
     }
 
-    //adds click listener and calls functions that set a marker and specifies lat long at click location
-   	map.addListener('click', function(e) {
-  		//placeMarker(map, e.latLng);
-  		placeCircle(map, e.latLng);
-  		setLatLong(e.latLng);
-  	});
 }
 
 // function called on click event to set a map marker at click location
@@ -95,14 +87,7 @@ function placeCircle(map, location){
 		fillOpacity: 0.2,
 		editable: true
 	});
-  google.maps.event.addListener(circle, 'radius_changed', function() {
-    radiusChange(circle);
-  });
     circles.push(circle);
-}
-
-function radiusChange(circle){
-  document.getElementById("radius").value = getCircleRadius(circle);
 }
 
 function getCircleRadius(circle){
@@ -114,13 +99,9 @@ function getCircleCenter(circle){
 }
 
 //function called on click event to set long and lat on the form for submission
+var latitude;
+var longitude
 function setLatLong(location){
-	document.getElementById("longitude").value = location.lng();
-	document.getElementById("latitude").value = location.lat();
-}
-
-////function called on geolocating event to set long and lat on the form for submission
-function setLatLongGeo(position){
-	document.getElementById("longitude").value = position.coords.longitude;
-	document.getElementById("latitude").value = position.coords.latitude;
+	longitude = location.lng();
+	latitude = location.lat();
 }
