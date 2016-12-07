@@ -34,6 +34,7 @@ class EventInfo
       $endt = "null";
     } else {
       $endt = "'" . $endTime->format('Y-m-d h:i:s') . "'";
+    }
 
     $result = $mysqli->query("insert into EventInfo values (0, " .
 			     "'" . $mysqli->real_escape_string($eventName) . "', " .
@@ -52,12 +53,25 @@ class EventInfo
     }
     return null;
   }
-}
 
-  public static function findByID($id) {
+  public static function getAllIDs() {
     $mysqli = EventInfo::connect();
 
-    $result = $mysqli->query("select * from EventInfo where id = " . $id);
+    $result = $mysqli->query("select id from EventInfo");
+    $id_array = array();
+
+    if ($result) {
+      while ($next_row = $result->fetch_array()) {
+	$id_array[] = intval($next_row['id']);
+      }
+    }
+    return $id_array;
+  }
+
+  public static function findByEventName($eventName){
+    $mysqli = EventInfo::connect();
+
+    $result = $mysqli->query("select * from EventInfo where eventName = " . $eventName);
     if ($result) {
       if ($result->num_rows == 0) {
 	return null;
@@ -83,41 +97,13 @@ class EventInfo
 		      floatval($EventInfo_info['longitude']),
 		      floatval($EventInfo_info['radius']),
 		      intval($EventInfo_info['numberAttending']),
-		      intval($EventInfo_info['numberAttending']),
+		      intval($EventInfo_info['hostID']),
 		      $startTime,
 		      $endTime,
 		      $EventInfo_info['description']);
     }
     return null;
   }
-
-  public static function getAllIDs() {
-    $mysqli = EventInfo::connect();
-
-    $result = $mysqli->query("select id from EventInfo");
-    $id_array = array();
-
-    if ($result) {
-      while ($next_row = $result->fetch_array()) {
-	$id_array[] = intval($next_row['id']);
-      }
-    }
-    return $id_array;
-  }
-
-  public static function getIDs($eventName){
-		$mysqli = EventInfo::connect();
-		$result = $mysqli->query("select id from EventInfo where EventName = " . $eventName);
-		$id_array = array();
-
-		if($result){
-			while($next_row = $result->fetch_array()){
-			 $id_array[] = intval($next_row['id']);
-			}
-		}
-		return $id_array;
-  }
-
 
   private function __construct($id, $eventName, $latitude, $longitude, $radius, $numberAttending, $hostID, $startTime, $endTime, $description) {
     $this->id = $id;
@@ -281,3 +267,4 @@ class EventInfo
     return json_encode($json_obj);
   }
 }
+

@@ -24,138 +24,117 @@ switch($resource_type) {
   			exit();
 			}*/
 			if (!isset($_REQUEST['FName'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing first name");
-      			exit();
-    			}
-			$fName = trim($_REQUEST['FName']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing first name");
+      				exit();
+    			}$fName = trim($_REQUEST['FName']);
 
 			if (!isset($_REQUEST['LName'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing last name");
-      			exit();
-			}
-			$lName = trim($_REQUEST['LName']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing last name");
+      				exit();
+			}$lName = trim($_REQUEST['LName']);
 
 			if (!isset($_REQUEST['Email'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing email");
-      			exit();
-    			}
-			$email = trim($_REQUEST['Email']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing email");
+      				exit();
+    			}$email = trim($_REQUEST['Email']);
 
 			if (!isset($_REQUEST['EventName'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing event name");
-      			exit();
-    			}
-			$eventName = trim($_REQUEST['EventName']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing event name");
+      				exit();
+    			}$eventName = trim($_REQUEST['EventName']);
 
 			if (!isset($_REQUEST['Latitude'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing latitude");
-      			exit();
-    			}
-			$latitude = trim($_REQUEST['Latitude']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing latitude");
+      				exit();
+    			}	$latitude = trim($_REQUEST['Latitude']);
 
 			if (!isset($_REQUEST['Longitude'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing longitude");
-      			exit();
-    			}
-			$longitude = trim($_REQUEST['Longitude']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing longitude");
+      				exit();
+    			}$longitude = trim($_REQUEST['Longitude']);
 
 			if (!isset($_REQUEST['Radius'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing radius");
-      			exit();
-    			}
-			$radius = trim($_REQUEST['Radius']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing radius");
+      				exit();
+    			}$radius = trim($_REQUEST['Radius']);
 
 			if (!isset($_REQUEST['NumberAttending'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing number attending");
-      			exit();
-    			}
-			$numberAttending = trim($_REQUEST['NumberAttending']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing number attending");
+      				exit();
+    			}$numberAttending = trim($_REQUEST['NumberAttending']);
 
 			if (!isset($_REQUEST['StartTime'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing start time");
-      			exit();}
-			$startTime = trim($_REQUEST['StartTime']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing start time");
+      				exit();
+			}$startTime = trim($_REQUEST['StartTime']);
 
 			if (!isset($_REQUEST['EndTime'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing end time");
-      			exit();}
-			$endTime = trim($_REQUEST['EndTime']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing end time");
+      				exit();
+			}$endTime = trim($_REQUEST['EndTime']);
 
 			if (!isset($_REQUEST['Description'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing latitude");
-      			exit();}
-			$description = trim($_REQUEST['Description']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing latitude");
+      				exit();
+			}$description = trim($_REQUEST['Description']);
 
 			$new_event = MasterEventCreate::insert($fName, $lName, $email, $eventName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description);
 
 			if($new_event == null){
-			header("HTTP/1.0 500 Server Error");
-     			print("Server couldn't create your event. Check your parameters");
-     			exit();
+				header("HTTP/1.0 500 Server Error");
+     				print("Server couldn't create your event. Check your parameters");
+     				exit();
 			}
 
 			header("Content-type: application/json");
 			print($new_event->getJSON());
 			exit();
 		}
-	else {
-		header("HTTP/1.0 400 Bad Request");
-		print("Got MasterEventCreate but not a post Request");
-}
 	break;
 
 	case "MasterEventCheckIn" :
 		if ($_SERVER['REQUEST_METHOD'] == "POST"){
 			if (!isset($_REQUEST['FName'])) {
-      			header("HTTP/1.0 400 Bad Request");
-      			print("Missing first name");
-      			exit();
-   		 	}
-
-			$fName = trim($_REQUEST['FName']);
+      				header("HTTP/1.0 400 Bad Request");
+      				print("Missing first name");
+      				exit();
+   		 	}$fName = trim($_REQUEST['FName']);
 
 			if (!isset($_REQUEST['LName'])) {
- 		     	header("HTTP/1.0 400 Bad Request");
-		      	print("Missing last name");
- 		     	exit();
- 		   	}
-
-			$lName = trim($_REQUEST['LName']);
+ 		     		header("HTTP/1.0 400 Bad Request");
+		      		print("Missing last name");
+ 		     		exit();
+ 		   	}$lName = trim($_REQUEST['LName']);
 
 			if (!isset($_REQUEST['Email'])) {
- 		     	header("HTTP/1.0 400 Bad Request");
- 		     	print("Missing email");
-  		    	exit();
- 		   	}
-
-			$email = trim($_REQUEST['Email']);
+ 		     		header("HTTP/1.0 400 Bad Request");
+ 		     		print("Missing email");
+  		    		exit();
+ 		   	}$email = trim($_REQUEST['Email']);
 
 			if (!isset($_REQUEST['EventName'])) {
- 		     	header("HTTP/1.0 400 Bad Request");
- 		     	print("Missing event name");
- 		     	exit();
- 		   	}
-
-			$eventName = trim($_REQUEST['EventName']);
-
+ 		     		header("HTTP/1.0 400 Bad Request");
+ 		     		print("Missing event name");
+ 		     		exit();
+ 		   	}$eventName = trim($_REQUEST['EventName']);
 
 			$new_checkin = MasterEventCheckIn::insert($fName, $lName, $email, $eventName);
 
 			if($new_checkin == null){
-			header("HTTP/1.0 500 Server Error");
- 		    	print("Server couldn't check you into the event. Check your parameters.");
- 		    	exit();
+				header("HTTP/1.0 500 Server Error");
+ 			    	print("Server couldn't check you into the event. Check your parameters.");
+ 		    		exit();
 			}
 
 			header("Content-type: application/json");
@@ -163,13 +142,22 @@ switch($resource_type) {
 			exit();
 
 		}
-		else{
-		//print bad statement
-		}
 	break;
 
 	case "Person" :
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
+			$person_email = ($path_components[2]);
+			$person = Person::findByEmail($person_email);
+			if (person == null) {
+				header("HTTP/1.0 404 Not Found");
+				print("Person going by the email, " . $person_email . ", not found.");
+				exit();
+			}
+			header('Content-Type: application/json');
+			print($person->getJSON());
+			exit();
+		}
+		/*
 		   if( (count($path_components) == 3) && $path_components[2] !== ""){
 			$person_id = intval($path_components[2]);
 			$person = Person::findByID($person_id);
@@ -196,17 +184,16 @@ switch($resource_type) {
   			print(json_encode(Person::getAllIDs()));
   			exit();
 		   }
-
-		   header("HTTP/1.0 404 Bad Request");
-		   print("Incorrect GET Request");
-		}
+		*/
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
+		
+			/*
 			if ((count($path_components) == 3) && $path_components[2] !== ""){
 				header("HTTP/1.0 404 Bad Request");
 		   		print("Incorrect PUT Request");
   				exit();
 		   	}
-
+			*/
 			$person_id = intval($path_components[2]);
 			$person = Person::findByID($person_id);
 
@@ -247,15 +234,9 @@ switch($resource_type) {
       			  }
 			}
 
-			if($new_fname){
-			  $person->setFName($new_fname);
-			}
-			if($new_lname){
-			  $person->setLName($new_lname);
-			}
-			if($new_email){
-			  $person->setEmail($new_email);
-			}
+			if($new_fname){ $person->setFName($new_fname);}
+			if($new_lname){ $person->setLName($new_lname);}
+			if($new_email){ $person->setEmail($new_email);}
 
     			header("Content-type: application/json");
     			print($person->getJSON());
@@ -279,6 +260,20 @@ switch($resource_type) {
 
 	case “EventInfo” :
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
+			$eventinfo_eventname == ($path_components[2]);
+			$eventinfo = EventInfo::findbyEventName($eventinfo_eventname);
+			if($$eventinfo  == null) {
+				header("HTTP/1.0 404 Not Found");
+				print("Event " . $eventinfo_eventname . " not found.");
+				exit();
+			}
+			header('Content-Type: application/json');
+			print($eventinfo->getJSON());
+			exit();
+		}
+
+
+		/*
 		   if( (count($path_components) == 3) && $path_components[2] !== ""){
 			$eventinfo_id = intval($path_components[2]);
 			$eventinfo = EventInfo::findByID($eventinfo_id);
@@ -289,7 +284,7 @@ switch($resource_type) {
     			   }
 
 			header('Content-Type: application/json');
-			print($settings->getJSON());
+			print($eventinfo->getJSON());
 			exit();
 
 			}
@@ -306,13 +301,15 @@ switch($resource_type) {
 
 		   header("HTTP/1.0 404 Bad Request");
 		   print("Incorrect GET Request");
-		}
+		} */
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
+			/*
 			if ((count($path_components) == 3) && $path_components[2] !== ""){
 				header("HTTP/1.0 404 Bad Request");
 		   		print("Incorrect PUT Request");
   				exit();
 		   	}
+			*/
 
 			$eventinfo_id = intval($path_components[2]);
 			$eventinfo = EventInfo::findByID($eventinfo_id);
@@ -417,33 +414,15 @@ switch($resource_type) {
       			  }
 			}
 
-			if($new_eventName){
-			  $eventinfo->setUserID($new_userID);
-			}
-			if($new_latitude){
-			  $eventinfo->setLatitude($new_latitude);
-			}
-			if($new_longitude){
-			  $eventinfo->setLongitude($new_longitude);
-			}
-			if($new_radius){
-			  $eventinfo->setRadius($new_radius);
-			}
-			if($new_numberAttending){
-			  $eventinfo->setNumberAttending($new_numberAttending);
-			}
-			if($new_hostID){
-			  $eventinfo->setHostID($new_hostID);
-			}
-			if($new_startTime){
-			  $eventinfo->setStartTime($new_startTime);
-			}
-			if($new_endTime){
-			  $eventinfo->setEndTime($new_endTime);
-			}
-			if($new_description){
-			  $eventinfo->setDescription($new_description);
-			}
+			if($new_eventName){ $eventinfo->setUserID($new_userID);}
+			if($new_latitude){ $eventinfo->setLatitude($new_latitude);}
+			if($new_longitude){ $eventinfo->setLongitude($new_longitude);}
+			if($new_radius){ $eventinfo->setRadius($new_radius);}
+			if($new_numberAttending){ $eventinfo->setNumberAttending($new_numberAttending);}
+			if($new_hostID){ $eventinfo->setHostID($new_hostID);}
+			if($new_startTime){ $eventinfo->setStartTime($new_startTime);}
+			if($new_endTime){ $eventinfo->setEndTime($new_endTime);}
+			if($new_description){ $eventinfo->setDescription($new_description);}
 
     			header("Content-type: application/json");
     			print($EventInfo->getJSON());
@@ -465,6 +444,7 @@ switch($resource_type) {
 			print("Incorrect DELETE Request");
 		}
 	break;
+
 	case "EventInfo_2_Person" :
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
 		   if( (count($path_components) == 3) && $path_components[2] !== ""){
@@ -567,3 +547,4 @@ switch($resource_type) {
 header("HTTP/1.0 400 made it to bottom");
 print("Did not understand URL");
 ?>
+

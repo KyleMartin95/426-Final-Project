@@ -62,18 +62,21 @@ class Person
     }
     return $id_array;
   }
-  public static function getIDs($email){
+  public static function findByEmail($email){
 	$mysqli = Person::connect();
-	$result = $mysqli->query("select id from Person where Email = " . $email);
-	$id_array = array();
-
+	$result = $mysqli->query("select * from Person where email = " . $email);
 	if ($result) {
-	  while($next_row = $result->fetch_array()) {
-	    $id_array[] = ($next_row['id']);
+	  if ($result->num_rows == 0) {
+	    return null;
 	  }
-	}
-	return $id_array;
 
+	  $Person_info = $result->fetch();
+	  return new Person(intval($Person_info['id']),
+			$Person_info['fName'],
+			$Person_info['lName'],
+			$Person_info['email']);
+	}
+	return null;
   }
 
   private function __construct($id, $fName, $lName, $email) {
@@ -142,4 +145,5 @@ class Person
     return json_encode($json_obj);
   }
 }
+
 
