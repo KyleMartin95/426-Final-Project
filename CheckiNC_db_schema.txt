@@ -1,0 +1,41 @@
+Person: stores information on event participants and hosts
+    ID (int) PRIMARY KEY, AUTO INCREMENT
+    fName (varchar) 
+    lName (varchar)
+    email (varchar) UNIQUE
+
+EventInfo: stores information on different events
+    ID (int) PRIMARY KEY, AUTO INCREMENT
+    eventName (varchar)	UNIQUE
+	latitude (decminal)
+	longitude (decimal)
+	numberAttending (int)
+	hostID (int) FOREIGN KEY
+	startTime (datetime)
+	endTime (datetime)
+	description (varchar)
+	radius (decimal)
+	
+EventInfo_2_Person: Relational table to associate each person with an event they are hosting or attending
+	ID (int) PRIMARY KEY, AUTO INCREMENT
+	eventId (int) NOT NULL, FOREIGN KEY
+	personId (int) NOT NULL, FOREIGN KEY
+	
+MasterEventCreate: used to populate other tables when creating event
+	fName (varchar) 
+    lName (varchar)
+    email (varchar) UNIQUE
+	eventName (varchar)	UNIQUE
+	latitude (decminal)
+	longitude (decimal)
+	numberAttending (int)
+	startTime (datetime)
+	endTime (datetime)
+	description (varchar)
+	radius (decimal)
+	
+MasterEventCheckIn: used to populate other tables when checking into event
+	fName (varchar) 
+    lName (varchar)
+    email (varchar) UNIQUE
+	eventName (varchar)	UNIQUE 
