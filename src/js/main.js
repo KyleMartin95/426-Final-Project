@@ -21,6 +21,13 @@ $(document).ready(function(){
 	};
 
 	var handleLookedUpEvent = function(lookedUpEvent){
+		$("#checkInInfo").toggle("slow");
+
+		var latitude = lookedUpEvent.latitude;
+		var longitude = lookedUpEvent.longitude;
+		var radius = lookedUpEvent.radius;
+
+		displayLookedUpEvent(latitude, longitude, radius);
 
 	};
 
