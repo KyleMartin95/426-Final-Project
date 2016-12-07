@@ -1,0 +1,13 @@
+Event_2_Person:
+	Input: eventId
+	Output: personId of every person attending
+	
+eventInfo:
+	Input: eventName
+	Output: latitude, longitude, radius, numberAttending, hostID, startTime, endTime, description
+	
+Person:
+	Input: ID
+	Output: email, fname, lname
+	
+	
