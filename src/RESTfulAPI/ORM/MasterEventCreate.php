@@ -126,7 +126,7 @@ class MasterEventCreate
 		      'numberAttending' => $this->numberAttending,
 		      'startTime' => $strt,
 		      'endTime' => $endt,
-		      'description' => $description);
+		      'description' => $this->description);
     return json_encode($json_obj);
   }
 }

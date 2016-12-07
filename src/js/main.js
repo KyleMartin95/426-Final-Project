@@ -16,7 +16,7 @@ $(document).ready(function(){
 		e.preventDefault();
 
 
-		/*var eventName = $("#eventName").val();
+		var eventName = $("#eventName").val();
 		var eventDescription = $("#eventDescription").val();
 		var startTime = $("#startTime").val();
 		var endTime = $("#endTime").val();
@@ -27,20 +27,10 @@ $(document).ready(function(){
 		var longitude = $("#longitude").val();
 		var radius = $("#radius").val();
 
-		var eventData = {
-			"eventName": eventName,
-			"eventDescription": eventDescription,
-			"startTime": startTime,
-			"endTime": endTime,
-			"firstName": hostFirstName,
-			"lastName": hostLastName,
-			"email": hostEmail,
-			"latitude": latitude,
-			"longitude": longitude,
-			"radius": radius
-		}
+		post_event(hostFirstName, hostLastName, hostEmail, eventName,
+			latitude, longitude, radius, 0, startTime, endTime, eventDescription);
 
-		$.ajaxSetup({
+		/*$.ajaxSetup({
 		    async: true
 		});
 
@@ -58,7 +48,7 @@ $(document).ready(function(){
 				debugger;
 				alert('error creating event');
 			}
-		});*/
+		});
 
     // Get URL from rest_url text input
     var ajax_url = base_url + "EventPost.php";
@@ -73,7 +63,7 @@ $(document).ready(function(){
     }
 
     // Make AJAX call
-    $.ajax(ajax_url, settings);
+    $.ajax(ajax_url, settings);*/
 	});
 
 	var ajax_success_handler = function(data, textStatus, jqXHR) {

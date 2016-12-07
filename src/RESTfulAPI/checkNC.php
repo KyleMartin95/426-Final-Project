@@ -7,16 +7,22 @@ require_once('ORM/MasterEventCreate.php');
 require_once('ORM/MasterEventCheckIn.php');
 
 $path_components = explode('/', $_SERVER['PATH_INFO']);
-$resource_type = $resource_components[1];
+$resource_type = $path_components[1];
+
+echo $_SERVER['PATH_INFO'];
+echo "       ";
+echo $_SERVER['REQUEST_METHOD'];
+echo "            ";
+print_r($_REQUEST);
 
 switch($resource_type) {
 	case "MasterEventCreate" :
 		if ($_SERVER['REQUEST_METHOD'] == "POST"){
-			if ((count($path_components) != 2)){
+			/*if ((count($path_components) != 2)){
 			header("HTTP/1.0 404 Not Found");
 		   	print("Incorrect POST Request");
   			exit();
-		   	}
+			}*/
 			if (!isset($_REQUEST['FName'])) {
       			header("HTTP/1.0 400 Bad Request");
       			print("Missing first name");
@@ -64,7 +70,7 @@ switch($resource_type) {
       			print("Missing radius");
       			exit();
     			}
-			$radius = trim($_REQUEST['radius']);
+			$radius = trim($_REQUEST['Radius']);
 
 			if (!isset($_REQUEST['NumberAttending'])) {
       			header("HTTP/1.0 400 Bad Request");
@@ -104,7 +110,8 @@ switch($resource_type) {
 			exit();
 		}
 	else {
-	//print bad statement
+		header("HTTP/1.0 400 Bad Request");
+		print("Got MasterEventCreate but not a post Request");
 }
 	break;
 
@@ -559,3 +566,4 @@ switch($resource_type) {
 }
 header("HTTP/1.0 400 Bad Request");
 print("Did not understand URL");
+?>

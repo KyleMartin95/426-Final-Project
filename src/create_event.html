@@ -18,45 +18,45 @@
 
     <div class="container">
       <div class="row" id="createEventInfo">
-        <form id="createEventForm" action="EventPost.php" method="POST">
+        <form id="createEventForm">
           <div class="row">
             <div class="form-group col-sm-6">
-              <input type="text" class="form-control" id="eventName" name="eName" value="Event Name">
+              <input type="text" class="form-control" id="eventName" name="EventName" value="Event Name">
             </div>
             <div class="form-group col-sm-6">
-              <input type="text" class="form-control" id="eventDescription" name="eDescription" value="Event Description">
+              <input type="text" class="form-control" id="eventDescription" name="Description" value="Event Description">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-sm-6">
-              <input type="time" class="form-control" id="startTime" name="sTime">
+              <input type="time" class="form-control" id="startTime" name="StartTime">
             </div>
             <div class="form-group col-sm-6">
-              <input type="time" class="form-control" id="startTime" name="eTime">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-sm-6">
-              <input type="text" class="form-control" id="hostFirstName" name="fName" value="First Name">
-            </div>
-            <div class="form-group col-sm-6">
-              <input type="text" class="form-control" id="hostLastName" name="lName" value="Last Name">
+              <input type="time" class="form-control" id="startTime" name="EndTime">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-sm-6">
-              <input type="email" class="form-control" id="hostEmail" name="email" value="Email Address">
+              <input type="text" class="form-control" id="hostFirstName" name="FName" value="First Name">
             </div>
             <div class="form-group col-sm-6">
-              <input type="text" class="form-control" id="latitude" name="latitude">
+              <input type="text" class="form-control" id="hostLastName" name="LName" value="Last Name">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-sm-6">
-              <input type="text" class="form-control" id="longitude" name="longitude">
+              <input type="email" class="form-control" id="hostEmail" name="Email" value="Email Address">
             </div>
             <div class="form-group col-sm-6">
-              <input type="text" class="form-control" id="radius" name="radius" value="50">
+              <input type="text" class="form-control" id="latitude" name="Latitude">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="longitude" name="Longitude">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="radius" name="Radius" value="50">
             </div>
           </div>
           <button id="createEventSubmit" type="submit" class="btn btn-default center-block">Submit</button>
@@ -93,6 +93,7 @@
 
     <!--                   javascript for the page                             -->
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/checkNCAJAX"></script>
     <!-- ///////////////////////////////////////////////////////////////////// -->
   </body>
 </html>
