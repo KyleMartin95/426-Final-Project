@@ -197,7 +197,7 @@ switch($resource_type) {
 			$person_id = intval($path_components[2]);
 			$person = Person::findByID($person_id);
 
-			if($userleaderboard == null){
+			if($person == null){
 				header("HTTP/1.0 404 Not Found");
       				print("Person id: " . $person_id . " not found while attempting update.");
       				exit();
@@ -260,6 +260,12 @@ switch($resource_type) {
 
 	case “EventInfo” :
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
+			if (isset($_REQUEST['EventName'])) {
+				header("Content-type: application/json");
+				print(json_encode(EventInfo::findByEventName($_REQUEST['EventName'])));
+				exit();
+			}
+			/*
 			$eventinfo_eventname == ($path_components[2]);
 			$eventinfo = EventInfo::findbyEventName($eventinfo_eventname);
 			if($$eventinfo  == null) {
@@ -270,6 +276,7 @@ switch($resource_type) {
 			header('Content-Type: application/json');
 			print($eventinfo->getJSON());
 			exit();
+			*/
 		}
 
 
@@ -414,7 +421,7 @@ switch($resource_type) {
       			  }
 			}
 
-			if($new_eventName){ $eventinfo->setUserID($new_userID);}
+			if($new_eventName){ $eventinfo->setEventName($new_eventName);}
 			if($new_latitude){ $eventinfo->setLatitude($new_latitude);}
 			if($new_longitude){ $eventinfo->setLongitude($new_longitude);}
 			if($new_radius){ $eventinfo->setRadius($new_radius);}
@@ -433,7 +440,7 @@ switch($resource_type) {
 
 		   	if(count($path_components) == 3){
 			  $eventinfo_id = intval($path_components[2]);
-			  $eventinfo = Settings::findByID($eventinfo_id);
+			  $eventinfo = EventInfo::findByID($eventinfo_id);
 			  $eventinfo->delete();
 
 			  header("Content-type: application/json");
@@ -447,21 +454,25 @@ switch($resource_type) {
 
 	case "EventInfo_2_Person" :
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
-		   if( (count($path_components) == 3) && $path_components[2] !== ""){
-			$EventInfo_2_Person_id = intval($path_components[2]);
-			$EventInfo_2_Person = EventInfo_2_Person::findByID($EventInfo_2_Person_id);
+			$eventinfo_eventname = intval($path_components[2]);
+			$eventid = intval(EventInfo::getIdByEventName($eventinfo_eventname));
 
-			if ($EventInfo_2_Person == null) {
+			if ($eventid == null) {
      				header("HTTP/1.0 404 Not Found");
-      				print("EventInfo_2_Person id: " . $EventInfo_2_Person_id . " not found.");
+      				print("Event id of " . $eventinfo_eventname . " was not found.");
       				exit();
     			   }
-
+		
+			$person_array = EventInfo_2_Person::getAllPersonIDs($eventid);
+			
+			
+			
 			header('Content-Type: application/json');
-			print($EventInfo_2_Person->getJSON());
+			print($person_array->getJSON());
 			exit();
 
 			}
+		/*
 		   else if (count($path_components) == 2){
 			if (isset($_REQUEST['EventID'])) {
       			header("Content-type: application/json");
@@ -473,10 +484,9 @@ switch($resource_type) {
   			print(json_encode(EventInfo_2_Person::getAllIDs()));
   			exit();
 		   }
+		*/
 
-		   header("HTTP/1.0 404 Bad Request");
-		   print("Incorrect GET Request");
-		}
+	
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
 			if ((count($path_components) == 3) && ($path_components[2] !== "")){
 				header("HTTP/1.0 404 Bad Request");
