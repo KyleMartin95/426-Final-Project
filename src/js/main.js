@@ -6,16 +6,26 @@ $(document).ready(function(){
 		post_event();
 	});
 
+	$("#eventLookUpForm").on('submit', function(e){
+		e.preventDefault();
+		look_up_event();
+	});
+
 	$("#checkInForm").on('submit', function(e){
 		e.preventDefault();
 		attend_event();
 	});
-
+/////////////////////////functions for handling ajax successes///////////////////////////
 	var handleNewEvent = function(newEvent){
 		//TODO: send them to a page with event stats or something
+	};
+
+	var handleLookedUpEvent = function(lookedUpEvent){
+
 	};
 
 	var handleNewAttendee = function(newAttendee){
 		//TODO: allow attendee to actually check in
 	};
+//////////////////////////////////////////////////////////////////////////////////////////
 });

@@ -10,9 +10,10 @@ body{
 	text-align: center;
 }
 
-#createEventInfo, #checkInInfo{
-	margin-top: 25px;
+#checkInInfo{
+	display: none;
 }
+
 
 #map{
 	width: 100%;

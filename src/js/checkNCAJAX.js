@@ -15,6 +15,21 @@ $(document).ready(function(){
 		});
 	};
 
+	var look_up_event = function(){
+		$.ajax({
+			type: "GET",
+			url: url_base + "/EventInfo",
+			datatype: "json",
+			data: ($("#eventLookUpForm").serialize()),
+			success: function(lookedUpEvent){
+				handleLookedUpEvent(lookedUpEvent);
+			},
+			error: function(){
+				alert("error looking up event");
+			}
+		});
+	}
+
 	var attend_event = function() {
 		$.ajax({type: "POST",
 			datatype: "json",

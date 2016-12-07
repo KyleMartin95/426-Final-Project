@@ -16,27 +16,29 @@
 
 
     <div class="container">
-      <div class="row" id="checkInInfo">
-          <form id="checkInForm">
+      <div class="row" id="eventCheckInInfo">
+          <form id="eventLookUpForm">
             <div class="row">
               <div class="form-group col-sm-6">
                 <input type="text" class="form-control" id="findEventName" name="EventName" value="Enter the name of the event you want to check in to">
               </div>
-              <div class="form-group col-sm-6">
-                <input type="text" class="form-control" id="attendeeFirstName" name="FName" value="First Name">
-              </div>
             </div>
-            <div class="row">
-              <div class="form-group col-sm-6">
-                <input type="text" class="form-control" id="attendeeLastName" name="LName" value="Last Name">
-              </div>
-              <div class="form-group col-sm-6">
-                <input type="email" class="form-control" id="attendeeEmail" name="Email" value="Email Address">
-              </div>
-            </div>
-            <button id="checkInSubmit" type="submit" class="btn btn-default center-block">Submit</button>
+            <button id="eventLookUpSubmit" type="submit" class="btn btn-default center-block">Submit</button>
           </form>
         </div>
+        <div class="row" id="checkInInfo">
+          <form id="checkInForm">
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="attendeeFirstName" name="FName" value="First Name">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" id="attendeeLastName" name="LName" value="Last Name">
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="email" class="form-control" id="attendeeEmail" name="Email" value="Email Address">
+            </div>
+            <button id="attendeeCheckInSubmit" type="submit" class="btn btn-default center-block">Submit</button>
+          </form>
       </div>
 
 
@@ -46,10 +48,6 @@
         <div id="map"></div>
       </div>
     </div>
-
-
-
-
 
 
 
