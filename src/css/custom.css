@@ -14,6 +14,23 @@ body{
 	display: none;
 }
 
+#eventInfoContainer {
+	width: 50%;
+	color: black;
+	float: left;
+}
+
+#eventEmailsDisplay {
+	width: 49%;
+	height: 200px;
+	float: right;
+	overflow: auto;
+}
+
+#eventInfoDisplay {
+	background-color: white;
+	display: none;
+}
 
 #map{
 	width: 100%;
