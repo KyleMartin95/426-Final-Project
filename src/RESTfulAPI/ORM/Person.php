@@ -49,6 +49,18 @@ class Person
     return null;
   }
 
+  public static function findEmailByID($id) {
+    $mysqli = Person::connect();
+
+    $result = $mysqli->query("select * from Person where id = " . $id);
+    if ($result) {
+	$person_email = $result->fetch_array();
+	return $person_email['email'];
+    }
+    else {
+    }
+  }
+
   public static function getAllIDs() {
     $mysqli = Person::connect();
 

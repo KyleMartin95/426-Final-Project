@@ -45,17 +45,18 @@ class EventInfo_2_Person
     }
     return $id_array;
   }
-  public static function getIDs($eventID){
-	$mysqli = EventInfo_2_Person::connect();
-	$result = $mysqli->query("select ID from EventInfo_2_Person where eventId = " . $eventID);
-	$id_array = array();
 
-	if ($result) {
-	  while($next_row = $result->fetch_array()) {
-	    $id_array[] = ($next_row['ID']);
-	  }
-	}
-	return $id_array;
+  public static function findByEventID($eventID){
+    $mysqli = EventInfo_2_Person::connect();
+    $result = $mysqli->query("select * from EventInfo_2_Person where eventId = " . $eventID);
+    $personid_array = array();
+
+    if ($result) {
+       while($next_row = $result->fetch_array()) {
+	 $personid_array[] = intval($next_row['personId']);
+       }
+    }
+    return $personid_array;
   }
 
   private function __construct($id, $eventID, $personID) {

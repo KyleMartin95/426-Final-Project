@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Event Info</title>
+    <link rel="stylesheet" type="text/css" href="css\bootstrapFlatly.min.css">
+    <link rel="stylesheet" type="text/css" href="css\custom.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Event Info</h2>
+      </div>
+    </div>
+
+
+    <div class="container">
+		<div class="row" id="eventSearchInfo">
+          <form id="eventSearchForm">
+            <div class="row">
+              <div class="form-group col-sm-6 col-sm-offset-3">
+                <input type="text" class="form-control" id="searchEventName" name="EventName" value="Enter the name of the event you want to display">
+              </div>
+            </div>
+            <button id="eventSearchSubmit" type="submit" class="btn btn-default center-block">Submit</button>
+          </form>
+        </div>
+	</div>
+    <div class="container" id="EventInfoDisplay">
+		<div class="container">
+			<div id = "eventNameDisplay"><h4 style = "color:white">Event Name:</h4></div>
+			<div id = "eventNumberDisplay"><h4 style = "color:white">Number Attending:</h4></div>
+			<div id = "eventDescriptionDisplay"><h4 style = "color:white">Description:</h4></div>
+		</div>
+		<div id = "eventEmailsDisplay"></div>
+	</div>
+
+
+
+	<div class="container" id="mapContainer">
+		<div class="row">
+		<div id="map"></div>
+		</div>
+	</div>
+
+
+
+    <!--                       functions for google maps                       -->
+    <script type="text/javascript" src="js\check_in_map_function.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF-CiVwM4PAZmBZaFRQ8IhCnbM6An54CI&callback=myMapCheckIn"></script>
+    <!-- ///////////////////////////////////////////////////////////////////// -->
+
+
+    <!--                   jQuery (for Bootstrap's JavaScript plugins)                       -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- /////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+    <!--                   javascript for the page                             -->
+    <script type="text/javascript" src="js/checkNCAJAX.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <!-- ///////////////////////////////////////////////////////////////////// -->
+  </body>
+</html>

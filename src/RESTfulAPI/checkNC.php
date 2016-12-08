@@ -140,54 +140,26 @@ switch($resource_type) {
 
 	case "Person" :
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
-			$person_email = ($path_components[2]);
-			$person = Person::findByEmail($person_email);
-			if (person == null) {
-				header("HTTP/1.0 404 Not Found");
-				print("Person going by the email, " . $person_email . ", not found.");
+			if (isset($_REQUEST['EventName'])) {
+				$returnEvent_ID = (EventInfo::getIDByEventName($_REQUEST['EventName']));
+				$cleanperson_array = array();
+				$cleanperson_array = (EventInfo_2_Person::findByEventID($returnEvent_ID));
+				
+				$returnpersonID_array = array();
+
+				foreach($cleanperson_array as $val){
+					$returnpersonID_array[] = (Person::findEmailByID($val));
+				}
+				header("Content-type: application/json");
+				print(json_encode($returnpersonID_array));
 				exit();
 			}
-			header('Content-Type: application/json');
-			print($person->getJSON());
-			exit();
-		}
-		/*
-		   if( (count($path_components) == 3) && $path_components[2] !== ""){
-			$person_id = intval($path_components[2]);
-			$person = Person::findByID($person_id);
-
-			if ($person == null) {
-     				header("HTTP/1.0 404 Not Found");
-      				print("Person id: " . $person_id . " not found.");
-      				exit();
-    			}
-
-			header('Content-Type: application/json');
-			print($person->getJSON());
-			exit();
-
+			else {
 			}
-		   else if ((count($path_components) == 2)){
-			if (isset($_REQUEST['Email'])) {
-      			header("Content-type: application/json");
-  				print(json_encode(Person::getIDs($_REQUEST['Email'])));
-  				exit();
-    			}
+		}
 
-       			header("Content-type: application/json");
-  			print(json_encode(Person::getAllIDs()));
-  			exit();
-		   }
-		*/
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
 
-			/*
-			if ((count($path_components) == 3) && $path_components[2] !== ""){
-				header("HTTP/1.0 404 Bad Request");
-		   		print("Incorrect PUT Request");
-  				exit();
-		   	}
-			*/
 			$person_id = intval($path_components[2]);
 			$person = Person::findByID($person_id);
 
@@ -261,7 +233,6 @@ switch($resource_type) {
 				exit();
 			}
 			else {
-				print("not set");
 			}
 		}
 			/*

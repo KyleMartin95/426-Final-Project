@@ -53,6 +53,16 @@ class EventInfo
     }
     return null;
   }
+  public static function getIDByEventName($eventName){
+    $mysqli = EventInfo::connect();
+    $result = $mysqli->query("select * from EventInfo where eventName = '" . $eventName . "'");
+    if($result){
+	$eventbyid = $result->fetch_array();
+	return (intval($eventbyid['ID']));
+	
+    }
+    else { return null; }
+    }
 
   public static function getAllIDs() {
     $mysqli = EventInfo::connect();
@@ -70,7 +80,6 @@ class EventInfo
 
   public static function findByEventName($eventName){
     $mysqli = EventInfo::connect();
-
     $result = $mysqli->query("select * from EventInfo where eventName = '" . $eventName . "'");
     if ($result) {
       $EventInfo_info = $result->fetch_array();
