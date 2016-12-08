@@ -112,7 +112,7 @@ $(document).ready(function(){
 				$.each(peopleInfo, function(key, value) {
 					var newP = document.createElement("p");
 					$("newP").text(peopleInfo.key);
-					$("#eventEmailsDisplay").append("<p>emails</p>");
+					$("#eventEmailsDisplay").append(newP);
 				});
 			},
 			error: function(){
