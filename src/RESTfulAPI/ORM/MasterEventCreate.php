@@ -16,13 +16,11 @@ class MasterEventCreate
   private $description;
 
   public static function connect() {
-    echo " made it to connect method ";
     return new mysqli("classroom.cs.unc.edu","kykyle","Whaling11!!!", "kykyledb");
   }
 
   public static function insert($fName, $lName, $email, $eventName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description) {
     $mysqli = MasterEventCreate::connect();
-    echo " made it to insert method ";
 
 /*
     if ($startTime == null) {
@@ -54,7 +52,6 @@ class MasterEventCreate
 			     $endt . ", " .
 			     "'" . $mysqli->real_escape_string($description) . "')";
 
-       echo $queryText;
 
     $result = $mysqli->query("insert into MasterEventCreate (fName, lName, email, eventName, latitude, longitude, radius, numberAttending, description) values ('" .
           $mysqli->real_escape_string($fName) . "', '" .
@@ -69,7 +66,6 @@ class MasterEventCreate
 			     //$endt . ", " .
 			     "'" . $mysqli->real_escape_string($description) . "')");
 
-    echo $result;
 
     if ($result) {
       $id = $mysqli->insert_id;
@@ -79,7 +75,6 @@ class MasterEventCreate
   }
 
   private function __construct($fName, $lName, $email, $eventName, $latitude, $longitude, $radius, $numberAttending, $startTime, $endTime, $description) {
-    echo "made it to constructor";
     $this->fName = $fName;
     $this->lName = $lName;
     $this->email = $email;

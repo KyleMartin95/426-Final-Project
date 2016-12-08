@@ -55,7 +55,10 @@ function displayLookedUpEvent(lat, long, radius){
     lat: lat,
     lng: long
   };
+  circleRadius = radius;
   placeCircle(myMap, pos);
+  myMap.setCenter(pos);
+  myMap.setZoom(15);
 }
 
 // function called on click event to set a map marker at click location
