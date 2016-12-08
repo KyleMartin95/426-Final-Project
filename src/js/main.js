@@ -111,7 +111,11 @@ $(document).ready(function(){
 			url: url_base + "/Person",
 			data: $("#eventSearchForm").serialize(),
 			success: function(peopleInfo){
-
+				$.each(peopleInfo, function(key, value) {
+					var newP = document.createElement("p");
+					$("newP").text(peopleInfo.key);
+					$("#eventEmailsDisplay").append("<p>emails</p>");
+				});
 			},
 			error: function(){
 				alert("error searching for event");
@@ -127,7 +131,15 @@ $(document).ready(function(){
 				var lat = lookedUpEvent.latitude;
 				var lon = lookedUpEvent.longitude;
 				var radius = lookedUpEvent.radius;
-
+				displayLookedUpEvent(lat, lon, radius);
+				if(!$("#eventInfoDisplay").is(":visible") || (!lookedUpEvent && $("#eventInfoDisplay").is(":visible"))) { //
+					$("#eventInfoDisplay").toggle("fast");
+				}
+				if(lookedUpEvent) {
+					$("#eventNameDisplay").val(lookedUpEvent.eventName);
+					$("#eventNumberDisplay").val(lookedUpEvent.numberAttending);
+					$("#eventDescriptionDisplay").val(lookedUpEvent.description);
+				}
 			},
 			error: function(){
 				alert("error looking up event");
