@@ -18,6 +18,11 @@ $(document).ready(function(){
 		attend_event();
 	});
 
+	$("#eventSearchForm").on('submit', function(e){
+		e.preventDefault();
+		search_event();
+	});
+
 	var post_event = function(){
 		$.ajax({type: "POST",
 			url: url_base + "/MasterEventCreate",
@@ -98,19 +103,49 @@ $(document).ready(function(){
 		});
 	};
 
+	var search_event = function(){
+////////////////////////////returns emails////////////////////////////
+		$.ajax({
+			type: "GET",
+			datatype: "json",
+			url: url_base + "/Person",
+			data: $("#eventSearchForm").serialize(),
+			success: function(peopleInfo){
 
-/////////////////////////functions for handling ajax successes///////////////////////////
-	var handleNewEvent = function(newEvent){
-		//TODO: send them to a page with event stats or something
+			},
+			error: function(){
+				alert("error searching for event");
+			}
+		});
+///////////////////returns event info//////////////////////////////////
+		$.ajax({
+			type: "GET",
+			url: url_base + "/EventInfo",
+			datatype: "json",
+			data: ($("#eventLookUpForm").serialize()),
+			success: function(lookedUpEvent){
+				var lat = lookedUpEvent.latitude;
+				var lon = lookedUpEvent.longitude;
+				var radius = lookedUpEvent.radius;
+
+			},
+			error: function(){
+				alert("error looking up event");
+			}
+		});
+//////////////////////returns host info///////////////////////////////
+		$.ajax({
+			type: "GET",
+			datatype: "json",
+			url: url_base + "/EventInfo_2_Person",
+			data: $("#eventSearchForm").serialize(),
+			success: function(searchedEvent){
+
+			},
+			error: function(){
+				alert("error searching for event");
+			}
+		});
 	};
 
-	var handleLookedUpEvent = function(lookedUpEvent){
-
-	};
-
-	var handleNewAttendee = function(newAttendee){
-
-	};
-
-//////////////////////////////////////////////////////////////////////////////////////////
 });
