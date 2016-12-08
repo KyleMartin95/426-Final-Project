@@ -12,11 +12,6 @@ $resource_type = $path_components[1];
 switch($resource_type) {
 	case "MasterEventCreate" :
 		if ($_POST){
-			/*if ((count($path_components) != 2)){
-			header("HTTP/1.0 404 Not Found");
-		   	print("Incorrect POST Request");
-  			exit();
-			}*/
 			if (!isset($_REQUEST['FName'])) {
       				header("HTTP/1.0 400 Bad Request");
       				print("Missing first name");
@@ -235,59 +230,7 @@ switch($resource_type) {
 			else {
 			}
 		}
-			/*
-			$eventinfo_eventname == ($path_components[2]);
-			$eventinfo = EventInfo::findbyEventName($eventinfo_eventname);
-			if($$eventinfo  == null) {
-				header("HTTP/1.0 404 Not Found");
-				print("Event " . $eventinfo_eventname . " not found.");
-				exit();
-			}
-			header('Content-Type: application/json');
-			print($eventinfo->getJSON());
-			exit();
-			*/
-
-
-		/*
-		   if( (count($path_components) == 3) && $path_components[2] !== ""){
-			$eventinfo_id = intval($path_components[2]);
-			$eventinfo = EventInfo::findByID($eventinfo_id);
-			if ($eventinfo == null) {
-     				header("HTTP/1.0 404 Not Found");
-      				print("EventInfo id: " . $eventinfo_id . " not found.");
-      				exit();
-    			   }
-
-			header('Content-Type: application/json');
-			print($eventinfo->getJSON());
-			exit();
-
-			}
-		   else if (count($path_components) == 2){
-			if (isset($_REQUEST['EventName'])) {
-      			header("Content-type: application/json");
-  				print(json_encode(EventInfo::getIDs($_REQUEST['eventName'])));
-  				exit();
-    			}
-			header("Content-type: application/json");
-  			print(json_encode(EventInfo::getAllIDs()));
-  			exit();
-		   }
-
-		   header("HTTP/1.0 404 Bad Request");
-		   print("Incorrect GET Request");
-		} */
-
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
-			/*
-			if ((count($path_components) == 3) && $path_components[2] !== ""){
-				header("HTTP/1.0 404 Bad Request");
-		   		print("Incorrect PUT Request");
-  				exit();
-		   	}
-			*/
-
 			$eventinfo_id = intval($path_components[2]);
 			$eventinfo = EventInfo::findByID($eventinfo_id);
 
@@ -424,38 +367,16 @@ switch($resource_type) {
 
 	case "EventInfo_2_Person" :
 		if ($_SERVER['REQUEST_METHOD'] == "GET") {
-			$eventinfo_eventname = intval($path_components[2]);
-			$eventid = intval(EventInfo::getIdByEventName($eventinfo_eventname));
-
-			if ($eventid == null) {
-     				header("HTTP/1.0 404 Not Found");
-      				print("Event id of " . $eventinfo_eventname . " was not found.");
-      				exit();
-    			   }
-
-			$person_array = EventInfo_2_Person::getAllPersonIDs($eventid);
-
-
-
-			header('Content-Type: application/json');
-			print($person_array->getJSON());
-			exit();
-
+			if (isset($_REQUEST['EventName'])) {
+				$returnHost_ID = (EventInfo::getHostIDByEventName($_REQUEST['EventName']));
+				$host_info = (Person::findByID($returnHost_ID));				
+				header("Content-type: application/json");
+				print($host_info->getJSON());
+				exit();
 			}
-		/*
-		   else if (count($path_components) == 2){
-			if (isset($_REQUEST['EventID'])) {
-      			header("Content-type: application/json");
-  				print(json_encode(EventInfo_2_Person::getIDs($_REQUEST['EventID'])));
-  				exit();
-    			}
-
-			header("Content-type: application/json");
-  			print(json_encode(EventInfo_2_Person::getAllIDs()));
-  			exit();
-		   }
-		*/
-
+			else {
+			}
+		}
 
 		else if ($_SERVER['REQUEST_METHOD'] == "PUT"){
 			if ((count($path_components) == 3) && ($path_components[2] !== "")){
