@@ -50,8 +50,6 @@ $(document).ready(function(){
 				var curLat = getAttendeeLat();
 				var curLon = getAttendeeLong();
 
-				displayLookedUpEvent(lat, lon, radius);
-
 				var canCheckIn = false; //controls whether attendee can check into current event
 										//set to false at first since no event has been looked up
 				function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2, radius) {
@@ -127,6 +125,7 @@ $(document).ready(function(){
 				var lat = lookedUpEvent.latitude;
 				var lon = lookedUpEvent.longitude;
 				var radius = lookedUpEvent.radius;
+				displayLookedUpEvent(lat, lon, radius);
 
 			},
 			error: function(){
