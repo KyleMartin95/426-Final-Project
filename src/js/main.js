@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 	$("#checkInForm").on('submit', function(e){
 		e.preventDefault();
+		$("#submitEventName").val($("#findEventName").val());
 		attend_event();
 	});
 
@@ -71,7 +72,8 @@ $(document).ready(function(){
 				canCheckIn = getDistanceFromLatLonInM(lat,lon,curLat,curLon, radius);
 
 				if(canCheckIn){
-					$("#checkInInfo").toggle("slow");
+					$("#eventCheckInInfo").toggle("fast")
+					$("#checkInInfo").toggle("fast");
 				}else{
 					alert("You're not at the event! Please go to it and try to check in a again");
 				}
@@ -88,7 +90,7 @@ $(document).ready(function(){
 			url: url_base + "/MasterEventCheckIn",
 			data:	($("#checkInForm").serialize()),
 			success: function(newAttendee){
-				handleNewAttendee(newAttendee);
+				alert("Thanks for checking in!")
 			},
 			error: function(){
 				alert("error adding attendee");

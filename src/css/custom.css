@@ -10,10 +10,11 @@ body{
 	text-align: center;
 }
 
-#checkInInfo{
+#checkInInfo, #submitEventName{
 	display: none;
 }
 
+<<<<<<< HEAD
 #eventInfoContainer {
 	width: 50%;
 	color: black;
@@ -32,6 +33,8 @@ body{
 	display: none;
 }
 
+=======
+>>>>>>> origin/dev
 #map{
 	width: 100%;
 	height: 300px;
