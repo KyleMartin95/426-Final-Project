@@ -63,6 +63,16 @@ class EventInfo
     }
     else { return null; }
     }
+  public static function getHostIDByEventName($eventName){
+    $mysqli = EventInfo::connect();
+    $result = $mysqli->query("select * from EventInfo where eventName = '" . $eventName . "'");
+    if($result){
+	$evenbyhost = $result->fetch_array();
+	return (intval($eventbyhost['hostID']));
+
+    }
+    else{return null;}
+    }
 
   public static function getAllIDs() {
     $mysqli = EventInfo::connect();
