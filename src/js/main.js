@@ -151,7 +151,7 @@ $(document).ready(function(){
 			url: url_base + "/EventInfo_2_Person",
 			data: $("#eventSearchForm").serialize(),
 			success: function(searchedEvent){
-
+				$("#eventNameDisplay").val(searchedEvent.fName + " " + searchedEvent.lName + " " + searchedEvent.email);
 			},
 			error: function(){
 				alert("error searching for event");
