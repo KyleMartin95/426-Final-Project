@@ -29,6 +29,9 @@ function myMapCheckIn() {
               lng: position.coords.longitude
             };
 
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
             myMap.setCenter(pos);
             myMap.setZoom(15);
             placeMarker(myMap, pos);

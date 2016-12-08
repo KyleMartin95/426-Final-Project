@@ -10,10 +10,9 @@ body{
 	text-align: center;
 }
 
-#checkInInfo{
+#checkInInfo, #submitEventName{
 	display: none;
 }
-
 
 #map{
 	width: 100%;
